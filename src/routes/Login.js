@@ -1,40 +1,47 @@
-import React, { useRef } from 'react'
-import { registerNewUser } from '../utils/requests';
+import React, { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { setLoggedIn } from '../redux/slices/userSlice';
+import { loginUser, refreshToken } from '../utils/requests';
 
 const Login = () => {
-    let username = useRef();
-    let password = useRef();
-    let firstName = useRef();
-    let lastName = useRef();
-    let email = useRef();
+    const dispatch = useDispatch()
+  const email = useRef();
+  const password = useRef();
+   const [response,setResponse] = useState(null)
 
-    const handleSubmit = (e) => {
-        let user = {
-            firstname: firstName.current.value,
-            lastname: lastName.current.value,
-            username: username.current.value,
-            email: email.current.value,
-            password: password.current.value
-        }
-        console.log(user)
-        registerNewUser(user)
-        .then(res => {
-            console.log(res)
-            console.log("you have successfully registered, check your email")
-        })
-        .catch(err => {
-            console.log(err)
-        })
+  const handleLogin = (e) => {
+    e.preventDefault();
+    let user = {
+        email: email.current.value,
+        password: password.current.value
     }
+    loginUser(user)
+    .then(res => {
+        console.log(res.data)
+        setResponse(res.data.token)
+        dispatch(setLoggedIn({token: res.data.token}))
 
+    })
+    .catch(err => {})
+  }
+  const handleRefreshToken = (e) => {
+    e.preventDefault();
+    refreshToken().then(res => {
+        console.log(res.data.accessToken)
+        setResponse(res.data.accessToken)
+    })
+  }
   return (
     <>
-    <input ref={username} placeholder="username" type="text" />
-    <input ref = {email} placeholder="email" type="text" />
+    <h1>Login Page</h1>
+    <input ref={email} type="text" placeholder='email' />
     <input ref={password} type="text" placeholder='password' />
-    <input ref = {firstName} type="text" placeholder='firstname'/>
-    <input ref = {lastName} type="text" placeholder='lastname' />
-    <button onClick = {handleSubmit}>Submit</button>
+    <button onClick={handleLogin}>Login</button>
+    {
+        response && <p>Access token: {response}</p>
+    }
+   
+    {response && <button onClick={handleRefreshToken}>Send refresh token and get new Access token</button>}
     </>
   )
 }
