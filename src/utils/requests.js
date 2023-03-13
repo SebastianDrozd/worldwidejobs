@@ -13,3 +13,6 @@ export const loginUser = (user) => {
 export const refreshToken = ()=> {
     return axios.post(`http://localhost:4000/api/v1/users/refresh`)
 }
+export const sendReCaptchaToken = (token) => {
+    return axios.post(`http://localhost:4000/api/v1/users/recaptcha`, {token})
+}

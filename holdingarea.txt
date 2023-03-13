@@ -1,0 +1,39 @@
+<h1>Register User</h1>
+            <input ref={username} placeholder="username" type="text" />
+            <input ref={email} placeholder="email" type="text" />
+            <input ref={password} type="text" placeholder='password' />
+            <input ref={firstName} type="text" placeholder='firstname' />
+            <input ref={lastName} type="text" placeholder='lastname' />
+            <label for="cars">Account Type:</label>
+            <select onChange={() => {
+                console.log(type.current.value)
+            }} ref={type} name="cars" id="cars">
+                <option value="none" selected disabled hidden>Select an Option</option>
+                <option value="user">User</option>
+                <option value="business">Business</option>
+            </select>
+            <br />
+            <ReCAPTCHA sitekey="6LcVGvskAAAAAEEosQDhQ6S564ixi4DBbnA_A4nA" onChange={handleCaptcha}/>
+
+        
+            <br />
+            <button onClick={handleSubmit}>Submit</button>
+
+
+            ////////////////////// end of registerUser
+
+
+
+
+
+            <h1>Login Page</h1>
+    <input ref={email} type="text" placeholder='email' />
+    <input ref={password} type="text" placeholder='password' />
+    <button onClick={handleLogin}>Login</button>
+    {
+        response && <p>Access token: {response}</p>
+    }
+   
+    {response && <button onClick={handleRefreshToken}>Send refresh token and get new Access token</button>}
+
+     {lastNameError && <label className='error-label' for="Firstname">Your last name doesnt seem correct</label>}
