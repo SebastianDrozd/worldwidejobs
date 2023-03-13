@@ -15,7 +15,8 @@ const RegisterUser = () => {
             lastname: lastName.current.value,
             username: username.current.value,
             email: email.current.value,
-            password: password.current.value
+            password: password.current.value,
+            type: type.current.value
         }
         console.log(user)
         registerNewUser(user)
@@ -37,9 +38,12 @@ const RegisterUser = () => {
             <input ref={firstName} type="text" placeholder='firstname' />
             <input ref={lastName} type="text" placeholder='lastname' />
             <label for="cars">Account Type:</label>
-            <select onChange={console.log(type.current.value)} ref={type} name="cars" id="cars">
-                <option value="volvo">User</option>
-                <option value="volvo">Business</option>
+            <select onChange={() => {
+                console.log(type.current.value)
+            }} ref={type} name="cars" id="cars">
+                <option value="none" selected disabled hidden>Select an Option</option>
+                <option value="user">User</option>
+                <option value="business">Business</option>
             </select>
             <button onClick={handleSubmit}>Submit</button>
         </>
