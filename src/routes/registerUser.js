@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { registerNewUser, sendReCaptchaToken } from '../utils/requests';
 import ReCAPTCHA from "react-google-recaptcha";
 import "../css/registerUser.css"
@@ -8,74 +8,96 @@ const RegisterUser = () => {
     const [firstNameError, setFirstNameError] = React.useState(false)
     const [lastNameError, setLastNameError] = React.useState(false)
     const [emailError, setEmailError] = React.useState(false)
-    const [passwordError,setPasswordError]  = React.useState(false)
+    const [passwordError, setPasswordError] = React.useState(false)
+    const [accountSuccess, setAccountSuccess] = React.useState(false)
+    const [captchaSuccess, setCaptchaSuccess] = React.useState(false)
+    const [captcherror, setCaptchaError] = React.useState(false)
+    const [captchaNotChecked, setCaptchaNotChecked] = React.useState(true);
+    const [captchaToken, setCaptchaToken] = React.useState("");
+    const [submitClicked, setSubmitClicked] = React.useState(false);
     const navigate = useNavigate()
-    let username = useRef();
     let password = useRef();
     let passwordConfirm = useRef();
     let firstName = useRef();
     let lastName = useRef();
     let email = useRef();
     let type = useRef();
+    let recaptchaRef = useRef();
 
-    const handleSubmit = (e) => {
-        let user = {
-            firstname: firstName.current.value,
-            lastname: lastName.current.value,
-            username: username.current.value,
-            email: email.current.value,
-            password: password.current.value,
-            type: type.current.value
-        }
-        console.log(user)
-        registerNewUser(user)
-            .then(res => {
-                console.log(res)
-                console.log("you have successfully registered, check your email")
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
     const handleCaptcha = (value) => {
+        setCaptchaToken(value)
         console.log(value)
+        captchaNotChecked(false)
         sendReCaptchaToken(value)
             .then(res => {
-                console.log(res)
+                setCaptchaSuccess(true)
             })
             .catch(err => {
-                console.log(err)
+                setCaptchaSuccess(false)
             })
     }
     const handleLogin = (e) => {
         e.preventDefault();
         navigate('/login')
     }
-    const handleFirstName = (e) => {
-        e.preventDefault();
-        if (firstName.current.value.length < 3) {
-            setFirstNameError(true)
-        }
-        else {
-            setFirstNameError(false)
-        }
-    }
     const handleSignUp = (e) => {
-        if (firstName.current.value.length < 3) {
-            //do a timeout function to show the error message for 3 seconds
-            setFirstNameError(true)
-            setTimeout(() => {
-                setFirstNameError(false)
-            }, 3000)
-           
+        //check if passwords match
+        if (firstName.current.value.length == 0 || lastName.current.value.length == 0 || email.current.value.length == 0 || password.current.value.length == 0 || passwordConfirm.current.value.length == 0) {
+            return;
         }
-         if(lastName.current.value.length < 2){
-            setLastNameError(true)
+        if (password.current.value != passwordConfirm.current.value) {
+            e.preventDefault();
+            setPasswordError(true)
             setTimeout(() => {
-                setLastNameError(false)
+                setPasswordError(false)
             }, 3000)
+            return;
         }
-        
+        if (captchaToken.length < 10 ) {
+            console.log(captchaToken)
+            console.log("recaptcha is null")
+            e.preventDefault();
+            setCaptchaNotChecked(true)
+            setTimeout(() => {
+                setCaptchaNotChecked(false)
+            }, 3000)
+            return;
+        }
+        if (captchaSuccess == false) {
+            e.preventDefault();
+            setReCaptchaError(true)
+            setTimeout(() => {
+                setReCaptchaError(false)
+            }, 3000)
+            return;
+        }
+       
+        else {
+            e.preventDefault();
+            let user = {
+                firstname: firstName.current.value,
+                lastname: lastName.current.value,
+                email: email.current.value,
+                password: password.current.value,
+                type: type.current.value
+            }
+            console.log(user)
+            registerNewUser(user)
+                .then(res => {
+                    console.log(res)
+                    setAccountSuccess(true)
+                    console.log("you have successfully registered, check your email")
+                })
+                .catch(err => {
+                    if (err.response.status == 409) {
+                        setEmailError(true)
+                        setTimeout(() => {
+                            setEmailError(false)
+                        }, 3000)
+                    }
+                })
+        }
+
     }
 
     return (
@@ -91,16 +113,27 @@ const RegisterUser = () => {
                         </div>
                         <span>or use your email for registration</span>
                         <br />
-                        
-                        <input  ref={firstName} type="text" id="firstname" placeholder="First Name" autoFocus required/>
-                      
+                        {emailError && <label className='error-label' for="Firstname">Email already exists</label>}
+
+                        <input ref={firstName} type="text" id="firstname" placeholder="First Name" autoFocus required />
+
                         <input ref={lastName} type="text" placeholder="Last Name" required />
-                       
-                        <input type="email" placeholder="Email" required/>
-                        <input type="password" placeholder="Password" required/>
-                        <input type="password" placeholder="Confirm Password" required/>
+
+                        <input ref={email} type="email" placeholder="Email" required />
+                        <input ref={password} type="password" placeholder="Password" pattern=".{3,}" required title="3 characters minimum" />
+                        <input ref={passwordConfirm} type="password" placeholder="Confirm Password" pattern=".{3,}" required title="3 characters minimum" />
+                        {passwordError && <label className='error-label' for="Firstname">Your passwords do not match</label>}
+                        {accountSuccess && <label className='success-label' for="Firstname">Your account has been created, please check your email</label>}
+                        <select onChange={() => {
+                            console.log(type.current.value)
+                        }} ref={type} name="cars" id="cars">
+                            <option value="none" selected disabled hidden>Select an Option</option>
+                            <option value="user">User</option>
+                            <option value="business">Business</option>
+                        </select>
                         <br />
-                        <ReCAPTCHA sitekey="6LcVGvskAAAAAEEosQDhQ6S564ixi4DBbnA_A4nA" onChange={handleCaptcha}/>
+                        <ReCAPTCHA ref={recaptchaRef} sitekey="6LcVGvskAAAAAEEosQDhQ6S564ixi4DBbnA_A4nA" onChange={handleCaptcha} />
+                        {captchaNotChecked && <label className='error-label' for="Firstname">Please verify that you are not a robot</label>}
                         <br />
                         <button onClick={handleSignUp}>Sign Up</button>
                     </form>

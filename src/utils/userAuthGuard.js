@@ -3,31 +3,30 @@ import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const UserAuthGuard = () => {
-    const [isRegularUser, setIsRegularUser] = React.useState(true)
+    const [isRegularUser, setIsRegularUser] = React.useState(false)
     
-    const token = useSelector(state => state.user.token)
-    let decodedToken = null;
     useEffect(() => {
-        if(token){
-            let result = false;
-            decodedToken = JSON.parse(atob(token.split('.')[1]))
-            console.log(decodedToken)
+        console.log("this is token in authgaruad", localStorage.getItem('token'))
+        if(localStorage.getItem('token')){
+           let token = localStorage.getItem('token')
+            let decodedToken = JSON.parse(atob(token.split('.')[1]))
+            console.log("decodedtoken in auth guard",decodedToken)
             if(decodedToken.aud == "user"){
-                result = true;
+                console.log("it does equal user")
+                setIsRegularUser(true)
             }
             else{
-                result = false;
+                console.log("it does not equal user")
+                setIsRegularUser(false)
             }
-            setIsRegularUser(result)
         }
-    })
-  return (
-
-    (
-        
-        isRegularUser == true? <Outlet/> : <Navigate to='/login' />
-    )
-  )
+       
+    }, [])
+    if(isRegularUser){
+        console.log("isRegularUser is true")
+        return (<Outlet/>)
+    }
+  else return (<Navigate to='/login' />)
 }
 
 export default UserAuthGuard
