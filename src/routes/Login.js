@@ -1,22 +1,55 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { setLoggedIn } from '../redux/slices/userSlice';
 import { loginUser, refreshToken } from '../utils/requests';
 import '../css/login.css'
+import { useLoginMutation } from '../redux/auth/authApiSlice';
+import { setCredentials } from '../redux/auth/authSlice';
 const Login = () => {
   const dispatch = useDispatch()
   const email = useRef();
   const password = useRef();
   const [response, setResponse] = useState(null)
+  const [userNotFoundError,setUserNotFoundError] = useState(false)
+  const [wrongPasswordError,setWrongPasswordError] = useState(false)
   const navigate = useNavigate();
-  const handleLogin = (e) => {
+
+  const [login,{isLoading}] = useLoginMutation()
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     let user = {
       email: email.current.value,
       password: password.current.value
     }
-    loginUser(user)
+    try{
+      const userData = await login(user).unwrap();
+      console.log("This is userdata",userData)
+      dispatch(setCredentials({user:userData.email,token:userData.token,type:userData.type}))
+      if(userData.type == "user"){
+        navigate('/uDashboard')
+      }
+      else if(userData.type == "business"){
+        navigate('/bDashboard')
+      }
+    } catch(err){
+      console.log("this is error message",err)
+      if(err.status == 404){
+        setUserNotFoundError(true)
+        setTimeout(() => {
+          setUserNotFoundError(false)
+        }, 4000);
+      }
+      else if(err.status == 401){
+        setWrongPasswordError(true)
+        setTimeout(() => {
+          setWrongPasswordError(false)
+        }, 4000);
+      }
+    }
+
+   /*  loginUser(user)
       .then(res => {
         console.log(res.data)
         setResponse(res.data.token)
@@ -24,14 +57,35 @@ const Login = () => {
         //set token to localstorage
         localStorage.setItem('token', res.data.token)
         if (res.data.type == "user") {
-          navigate('/uDashboard')
+       
+            navigate('/uDashboard')
+       
+          
+         
         }
         else if (res.data.type == 'business') {
-          navigate('/bDashboard')
+       
+            navigate('/bDashboard')
+        
+         
         }
 
       })
-      .catch(err => { })
+      .catch(err => { 
+        if(err.response.status == 404){
+          setUserNotFoundError(true)
+          setTimeout(() => {
+            setUserNotFoundError(false)
+          }, 4000);
+          
+        }
+        else if(err.response.status == 401){
+          setWrongPasswordError(true)
+          setTimeout(() => {
+            setWrongPasswordError(false)
+          }, 4000);
+        }
+      }) */
   }
   const handleRefreshToken = (e) => {
     e.preventDefault();
@@ -44,6 +98,13 @@ const Login = () => {
     e.preventDefault();
     navigate('/register')
   }
+
+  useEffect(() => {
+    email.current.focus();
+  },[])
+
+
+
   return (
     <>
       <div className='login-page'>
@@ -57,8 +118,10 @@ const Login = () => {
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
               </div>
               <span>or use your account</span>
+              {userNotFoundError && <p style={{color:'red'}}>A user could not be found with that email</p>}
               <input ref={email} type="email" placeholder="Email" />
               <input ref={password} type="password" placeholder="Password" />
+              {wrongPasswordError && <p style={{color:'red'}}>You have entered an incorrect password for this account</p>}
               <a href="#">Forgot your password?</a>
               <button onClick={handleLogin}>Sign In</button>
             </form>

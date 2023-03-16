@@ -16,3 +16,6 @@ export const refreshToken = ()=> {
 export const sendReCaptchaToken = (token) => {
     return axios.post(`http://localhost:4000/api/v1/users/recaptcha`, {token})
 }
+export const getUserInformation = (id,accessToken) => {    
+    return axios.get(`http://localhost:4000/api/v1/users/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+}

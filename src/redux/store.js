@@ -1,7 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './slices/userSlice'
+import { apiSlice } from './api/apiSlice'
+import authReducer from './auth/authSlice'
 export default configureStore({
   reducer: {
-    user: userReducer,
-  }
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+      devTools: true
 })

@@ -37,3 +37,34 @@
     {response && <button onClick={handleRefreshToken}>Send refresh token and get new Access token</button>}
 
      {lastNameError && <label className='error-label' for="Firstname">Your last name doesnt seem correct</label>}
+
+
+
+
+
+     console.log("App useEffect ran")
+    if (localStorage.getItem('token')) {
+      const decode = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
+      console.log("decoded token", decode)
+      if (new Date() < new Date(decode.exp * 1000)) {
+        dispatch(setLoggedIn({ token: localStorage.getItem('token') }))
+        setFinishedLoading(true)
+        if (decode.aud == "user") {
+          console.log("this is a user account")
+          setUserAccountType("user")
+        }
+        else if (decode.aud == "business") {
+          console.log("this is a business account")
+          setUserAccountType("business")
+        }
+      }
+      else {
+        console.log("token is exprired and needs to be refreshed")
+        refreshToken().then(res => {
+          console.log(res.data.accessToken)
+          dispatch(setLoggedIn({ token: res.data.accessToken }))
+          localStorage.setItem('token', res.data.accessToken)
+          setFinishedLoading(true)
+        })
+      }
+    }

@@ -12,7 +12,7 @@ const RegisterUser = () => {
     const [accountSuccess, setAccountSuccess] = React.useState(false)
     const [captchaSuccess, setCaptchaSuccess] = React.useState(false)
     const [captcherror, setCaptchaError] = React.useState(false)
-    const [captchaNotChecked, setCaptchaNotChecked] = React.useState(true);
+    const [captchaNotChecked, setCaptchaNotChecked] = React.useState(false);
     const [captchaToken, setCaptchaToken] = React.useState("");
     const [submitClicked, setSubmitClicked] = React.useState(false);
     const navigate = useNavigate()
@@ -63,16 +63,10 @@ const RegisterUser = () => {
             }, 3000)
             return;
         }
-        if (captchaSuccess == false) {
-            e.preventDefault();
-            setReCaptchaError(true)
-            setTimeout(() => {
-                setReCaptchaError(false)
-            }, 3000)
-            return;
-        }
+     
        
         else {
+            console.log("there are no errors")
             e.preventDefault();
             let user = {
                 firstname: firstName.current.value,
@@ -113,6 +107,8 @@ const RegisterUser = () => {
                         </div>
                         <span>or use your email for registration</span>
                         <br />
+                        {accountSuccess && <label className='success-label' for="Firstname">Your account has been created, please check your email</label>}
+                        <br />
                         {emailError && <label className='error-label' for="Firstname">Email already exists</label>}
 
                         <input ref={firstName} type="text" id="firstname" placeholder="First Name" autoFocus required />
@@ -123,7 +119,7 @@ const RegisterUser = () => {
                         <input ref={password} type="password" placeholder="Password" pattern=".{3,}" required title="3 characters minimum" />
                         <input ref={passwordConfirm} type="password" placeholder="Confirm Password" pattern=".{3,}" required title="3 characters minimum" />
                         {passwordError && <label className='error-label' for="Firstname">Your passwords do not match</label>}
-                        {accountSuccess && <label className='success-label' for="Firstname">Your account has been created, please check your email</label>}
+                      
                         <select onChange={() => {
                             console.log(type.current.value)
                         }} ref={type} name="cars" id="cars">
