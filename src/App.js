@@ -23,6 +23,7 @@ import Navbar from './component/navbar';
 import RequireAuth from './utils/protectedRoutes/requireAuth';
 
 function App() {
+  
 
   return (
     <>
@@ -38,12 +39,12 @@ function App() {
             <Route path='/uDashboard' element={<UserDashboard/>} />
           </Route> */}
           <Route path='/uDashboard' element={
-            <RequireAuth>
+            <RequireAuth allowedRoles={"user"}>
               <UserDashboard />
             </RequireAuth>
           } />
           <Route path='/bDashboard' element={
-          <RequireAuth>
+          <RequireAuth allowedRoles={"business"}>
           <BusinessDashboard />
         </RequireAuth>} />
           <Route path="/confirm/:token" element={<ConfirmPage />} />
