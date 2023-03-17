@@ -22,10 +22,9 @@ import BusinessProtectedRoute from './utils/businessProtectedRoute';
 import Navbar from './component/navbar';
 import RequireAuth from './utils/protectedRoutes/requireAuth';
 import CreateBusinessPage from './routes/createBusinessPage';
+import CreateJobPostingPage from './routes/createJobPostingPage';
 
 function App() {
-  
-
   return (
     <>
     <Navbar/>
@@ -41,6 +40,7 @@ function App() {
           <Route element={<RequireAuth allowedRoles={"business"} />}>
             <Route path="/bDashboard" element={<BusinessDashboard />} />
             <Route path = "bcreateBusiness" element={<CreateBusinessPage/>}/>
+            <Route path = "createNewJob" element={<CreateJobPostingPage/>}/>
           </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />

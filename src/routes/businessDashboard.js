@@ -33,6 +33,9 @@ const BusinessDashboard = () => {
     <p>This is the business dashboard page</p>
     <p>Logged in as {email}</p>
     <LogoutButton></LogoutButton>
+    <br />
+    <br />
+    <button onClick = { () => navigate("/createNewJob")}>Create new Job Posting</button>
     </div>
     
     </>

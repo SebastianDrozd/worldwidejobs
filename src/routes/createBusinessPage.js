@@ -63,6 +63,8 @@ const CreateBusinessPage = () => {
         state_province: formData.businessStateProvince,
         country: formData.businessCountry,
         postal_code: formData.businessPostalCode,
+        latitude : null,
+        longitude : null,
         business_id : null,
       }
       try{
