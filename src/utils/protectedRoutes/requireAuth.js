@@ -10,7 +10,7 @@ const RequireAuth = ({children,allowedRoles}) => {
     const location = useLocation()
   return (
     type == allowedRoles ? 
-    children 
+    <Outlet/> 
     : token && user 
     ? <div><h1>Unauthized site. Your account is {type}, and you are trying to access a {allowedRoles} page</h1></div>
     : <Navigate to="/login" state={{from : location}} replace />

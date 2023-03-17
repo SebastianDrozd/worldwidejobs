@@ -21,6 +21,7 @@ import UserProtectedRoute from './utils/userProtectedRoute';
 import BusinessProtectedRoute from './utils/businessProtectedRoute';
 import Navbar from './component/navbar';
 import RequireAuth from './utils/protectedRoutes/requireAuth';
+import CreateBusinessPage from './routes/createBusinessPage';
 
 function App() {
   
@@ -32,21 +33,15 @@ function App() {
         <Routes>
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/login" element={<Login />} />
-          {/*  <Route element={<BusinessAuthGuard />}>   
-            <Route path='/bDashboard' element={<BusinessDashboard />} />
-          </Route> */}
-          {/* <Route element={<UserAuthGuard />}>
-            <Route path='/uDashboard' element={<UserDashboard/>} />
-          </Route> */}
           <Route path='/uDashboard' element={
             <RequireAuth allowedRoles={"user"}>
               <UserDashboard />
             </RequireAuth>
           } />
-          <Route path='/bDashboard' element={
-          <RequireAuth allowedRoles={"business"}>
-          <BusinessDashboard />
-        </RequireAuth>} />
+          <Route element={<RequireAuth allowedRoles={"business"} />}>
+            <Route path="/bDashboard" element={<BusinessDashboard />} />
+            <Route path = "bcreateBusiness" element={<CreateBusinessPage/>}/>
+          </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>

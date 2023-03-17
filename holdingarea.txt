@@ -68,3 +68,33 @@
         })
       }
     }
+
+
+
+
+     <form>
+            <label>Business Name</label>
+            <input type="text" name="businessName" placeholder="Business Name" />
+            <label>Business Address</label>
+            <input type="text" name="businessAddress" placeholder="Business Address" />
+            <label>Business Phone Number</label>
+            <input type="text" name="businessPhoneNumber" placeholder="Business Phone Number" />
+            <label>Business Email</label>
+            <input type="text" name="businessEmail" placeholder="Business Email" />
+            <label>Business Description</label>
+            <input type="text" name="businessDescription" placeholder="Business Description" />
+            <label>Business Website</label>
+            <input type="text" name="businessWebsite" placeholder="Business Website" />
+            <label>Business Logo</label>
+            <input type="file" id="myFile" name="filename" />
+            <label>Business Cover Photo</label>
+            <input type="text" name="businessCoverPhoto" placeholder="Business Cover Photo" />
+            <label>Business Category</label>
+            <input type="text" name="businessCategory" placeholder="Business Category" />
+            <label>Business Subcategory</label>
+            <input type="text" name="businessSubcategory" placeholder="Business Subcategory" />
+            <label>Business Hours</label>
+            <input type="text" name="businessHours" placeholder="Business Hours" />
+
+            <button type="submit">Submit</button>
+          </form>
