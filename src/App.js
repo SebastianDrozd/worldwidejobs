@@ -23,6 +23,7 @@ import Navbar from './component/navbar';
 import RequireAuth from './utils/protectedRoutes/requireAuth';
 import CreateBusinessPage from './routes/createBusinessPage';
 import CreateJobPostingPage from './routes/createJobPostingPage';
+import JobsPage from './routes/jobsPage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/login" element={<Login />} />
+          <Route path = "/jobs/:query" element={<JobsPage/>}/>
           <Route path='/uDashboard' element={
             <RequireAuth allowedRoles={"user"}>
               <UserDashboard />

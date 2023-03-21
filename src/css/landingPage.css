@@ -6,10 +6,18 @@
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
 }
+.title{
+    font-size: 3em;
+    font-weight: 600;
+    color: rgb(92, 43, 226);
+    margin-bottom: 0.5em;
+}
 .title-sub{
     line-height: 20%;
     font-weight: 200;
     opacity: 0.7;
+    font-size: 1.5em;
+    margin-bottom: 2em;
 }
 .input-group{
     display: flex;
@@ -17,6 +25,9 @@
     width: 75%;
     margin: 0 auto;
     padding: 0em 1em;
+  
+    padding: 2em;
+    border-radius: 40px;
 }
 .input-group .job-type{
     width: 50%;
@@ -25,4 +36,13 @@
 .input-group .place{
     width: 30%;
     margin-right: 20px;
+}
+.search{
+    height: 3.5em;
+    font-family: inherit;
+    font-size: 1.5em;
+    border-radius: 10px;
+    background-color: aliceblue;
+    border-color: 1px solid rgb(92, 43, 226)  !important        ;
+    
 }

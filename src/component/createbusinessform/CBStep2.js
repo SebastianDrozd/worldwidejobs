@@ -4,7 +4,7 @@ const CBStep2 = ({formData,setFormData}) => {
     return (
         <div>
             <h4>Contact Information</h4>
-            <input onChange={(e) => {setFormData({...formData,businessAddress: e.target.value})}} type="text" name="businessAdress" placeholder="Business Address" />
+            <input onChange={(e) => {setFormData({...formData,businessStreet: e.target.value})}} type="text" name="businessAdress" placeholder="Business Address" />
             <input onChange={(e) => {setFormData({...formData,businessCity: e.target.value})}} type="text" name="businessEmail" placeholder="Business City" />
             <input onChange={(e) => {setFormData({...formData,businessStateProvince: e.target.value})}} type="text" name="businessStateProvince" placeholder="State/Province" />
             <input  onChange={(e) => {setFormData({...formData,businessCountry: e.target.value})}} type="text" name="businessPhone" placeholder="Business Country" />

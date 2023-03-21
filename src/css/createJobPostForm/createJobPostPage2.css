@@ -1,0 +1,11 @@
+.job-location-container {
+   
+margin-top: 2em;
+}
+.job-location-container label{
+   
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;;
+}

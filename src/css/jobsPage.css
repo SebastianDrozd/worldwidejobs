@@ -1,0 +1,49 @@
+.job-search-container{
+    display:flex;
+    width: 100%;
+    padding: 16px 24px 0;
+    column-count: 2;
+    column-gap: 25px;
+    justify-content: center;
+}
+.job-search-left{
+    min-width: 410px;
+    max-width: 648px;
+   
+}
+.job-search-right{
+    min-height: 900px;
+    width: 700px;
+    max-width: 790px;
+    min-width: 330px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 16px;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    border: 1px solid rgba(0, 0, 0, 0.172);
+    overflow: scroll;
+    padding: 2em;
+}
+.job-search-left-top{
+    padding: 0 1rem 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+}
+.job-card{
+    margin: 2em;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    min-height: 20em;
+    padding: 2em;
+    text-align: center;
+    cursor: pointer;
+}

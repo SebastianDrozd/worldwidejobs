@@ -1,0 +1,27 @@
+.input-group2{
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+    margin: 0 auto;
+    padding: 0em 1em;
+
+    padding: 2em;
+    border-radius: 40px;
+}
+.input-group2 .job-type{
+    width: 50%;
+    margin-right: 20px;
+}
+.input-group2 .place{
+    width: 30%;
+    margin-right: 20px;
+}
+.search2{
+    height: 2.5em;
+    font-family: inherit;
+    font-size: 1.5em;
+    border-radius: 10px;
+    background-color: aliceblue;
+           ;
+    
+}

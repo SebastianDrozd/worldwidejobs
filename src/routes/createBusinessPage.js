@@ -22,9 +22,7 @@ const CreateBusinessPage = () => {
     businessSize: "",
     businessIndustry: "",
     business_user_id: id, 
-
-
-    businessAddress: "",
+    businessStreet: "",
     businessCity: "",
     businessStateProvince: "",
     businessCountry: "",
@@ -41,7 +39,8 @@ const CreateBusinessPage = () => {
 
     }
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     if(page === 2){
       console.log("submitting")
       let business= {
@@ -58,7 +57,7 @@ const CreateBusinessPage = () => {
       }
       let address = {
         id : null,
-        address: formData.businessAddress,
+        street: formData.businessStreet,
         city: formData.businessCity,
         state_province: formData.businessStateProvince,
         country: formData.businessCountry,
