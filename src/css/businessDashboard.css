@@ -1,15 +1,15 @@
 .sidebar {
-    position: absolute;
-    
-    top: 1;
-   
-  }
-  .content {
-    margin-left: 100px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
-  .sidebar-man{
-    
+  position: absolute;
 
-  }
+  top: 1;
+
+}
+
+.content {
+  margin-left: 100px;
+  padding: 4em;
+
+}
+
+.business-right-container {
+}

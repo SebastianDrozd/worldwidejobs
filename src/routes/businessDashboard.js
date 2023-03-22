@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import { setUserState } from '../redux/slices/userSlice'
 import { setBusinessState } from '../redux/slices/businessSlice'
 import { NavbarMinimal } from '../component/ManTimeSidebar'
+import BusinessMyJobs from '../component/businessMyJobs'
+import BusinessMyCards from '../component/businessMyCards'
 const BusinessDashboard = () => {
   const dispatch = useDispatch()
   const email = useSelector (state => state.auth.user)
@@ -35,13 +37,19 @@ const BusinessDashboard = () => {
     <NavbarMinimal/>
     </div>
     <div className="content">
+     <div className="business-right-container">
     <h1>Business Dashboard</h1>
-    <p>This is the business dashboard page</p>
+    <BusinessMyJobs/>
+    <br />
+    <br />
+    <BusinessMyCards/>
+    <br />
     <p>Logged in as {email}</p>
     <LogoutButton></LogoutButton>
     <br />
     <br />
     <button onClick = { () => navigate("/createNewJob")}>Create new Job Posting</button>
+    </div>
     </div>
     
     </>
