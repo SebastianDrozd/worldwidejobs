@@ -7,6 +7,7 @@ import { useGetUserInformationQuery } from '../redux/user/userApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { setUserState } from '../redux/slices/userSlice'
 import { setBusinessState } from '../redux/slices/businessSlice'
+import { NavbarMinimal } from '../component/ManTimeSidebar'
 const BusinessDashboard = () => {
   const dispatch = useDispatch()
   const email = useSelector (state => state.auth.user)
@@ -31,7 +32,7 @@ const BusinessDashboard = () => {
   return (
     <>
     <div className="sidebar">
-    <SideBar/>
+    <NavbarMinimal/>
     </div>
     <div className="content">
     <h1>Business Dashboard</h1>

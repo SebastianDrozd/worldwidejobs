@@ -11,6 +11,7 @@ const CJPostForm2 = ({ setFormData, formData }) => {
   const stateProvince = useRef()
   const country = useRef()
   const postalCode = useRef()
+  const jobEmploymentType = useRef()
   const handleSelectButton = (e) => {
    setWantsCustom(false)
    
@@ -37,6 +38,12 @@ const handleSaveAddress = (e) => {
   })
   console.log(formData)
 }
+const handleEmploymentType = (e) => {
+  setFormData({
+    ...formData,
+    jobEmploymentType: jobEmploymentType.current.value
+  })
+}
   return (
     <div>
       <h4>Job Location</h4>
@@ -49,6 +56,12 @@ const handleSaveAddress = (e) => {
           <option value="remote">Remote</option>
         </select>
       </div>
+      <label for="cars">Job employment type:</label>
+      <select onChange={handleEmploymentType} ref={jobEmploymentType} name="cars" id="cars">
+        <option value="Part Time">Part time</option>
+        <option value="Full Time">Full time</option>
+        <option value="Seasonal">Seasonal</option>
+      </select>
       {wantsDefault && <div className='job-location-business-container'>
         <p>This will be the information that is used</p>
         <p>street : {businessAddress.businessStreet}</p>

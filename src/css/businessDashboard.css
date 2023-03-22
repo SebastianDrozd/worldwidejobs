@@ -1,14 +1,15 @@
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+    position: absolute;
+    
+    top: 1;
+   
   }
   .content {
-    margin-left: 200px;
+    margin-left: 100px;
     padding: 1px 16px;
     height: 1000px;
+  }
+  .sidebar-man{
+    
+
   }

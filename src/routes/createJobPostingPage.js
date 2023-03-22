@@ -23,7 +23,10 @@ const CreateJobPostingPage = () => {
     jobSkills: "",
     jobEducation: "",
     jobExperience: "",
+    jobEmploymentType: "",
     job_user_id: id,
+    jobCurrency: "",
+    jobPayType: "",
     address: {
       businessStreet: businessAddress.businessStreet,
       businessCity: businessAddress.businessCity,
@@ -57,6 +60,13 @@ const CreateJobPostingPage = () => {
           job_title: formData.jobTitle,
           job_description: formData.jobDescription,
           job_business_id: businessId,
+          job_employment_type : formData.jobEmploymentType,
+          job_experience: formData.jobExperience,
+          job_education: formData.jobEducation,
+          job_pay_frequency: formData.jobPayFrequency,
+          job_salary: formData.jobSalary,
+          job_currency: formData.jobCurrency,
+          job_pay_type: formData.jobPayType,
 
         },
         address: {
@@ -67,7 +77,7 @@ const CreateJobPostingPage = () => {
           job_postal_code: formData.address.businessPostalCode,
         },
       }
-      console.log(jobPosting)
+      console.log("this is object that will be sent to backend ", jobPosting)
       const response = await createJobPost(jobPosting).unwrap();
       console.log(response)
     }

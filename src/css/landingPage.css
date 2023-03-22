@@ -1,5 +1,5 @@
 .landing-page-container{
-    height: 89vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 .title{
     font-size: 3em;
     font-weight: 600;
-    color: rgb(92, 43, 226);
+    color: rgb(43, 64, 226);
     margin-bottom: 0.5em;
 }
 .title-sub{
@@ -38,9 +38,9 @@
     margin-right: 20px;
 }
 .search{
-    height: 3.5em;
+    height: 3em;
     font-family: inherit;
-    font-size: 1.5em;
+    font-size: 1em;
     border-radius: 10px;
     background-color: aliceblue;
     border-color: 1px solid rgb(92, 43, 226)  !important        ;

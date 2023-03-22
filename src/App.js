@@ -24,11 +24,12 @@ import RequireAuth from './utils/protectedRoutes/requireAuth';
 import CreateBusinessPage from './routes/createBusinessPage';
 import CreateJobPostingPage from './routes/createJobPostingPage';
 import JobsPage from './routes/jobsPage';
+import { HeaderMegaMenu } from './component/ManTimeNavbar';
 
 function App() {
   return (
     <>
-    <Navbar/>
+    <HeaderMegaMenu/>
       <Router>
         <Routes>
           <Route path="/register" element={<RegisterUser />} />

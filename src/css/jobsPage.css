@@ -12,7 +12,7 @@
    
 }
 .job-search-right{
-    min-height: 900px;
+  
     width: 700px;
     max-width: 790px;
     min-width: 330px;
@@ -23,8 +23,11 @@
     height: -moz-max-content;
     height: max-content;
     border: 1px solid rgba(0, 0, 0, 0.172);
-    overflow: scroll;
-    padding: 2em;
+    
+   
+}
+.right-wrapper{
+    overflow-y: scroll;
 }
 .job-search-left-top{
     padding: 0 1rem 1rem;
@@ -44,6 +47,45 @@
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
     min-height: 20em;
     padding: 2em;
-    text-align: center;
+    
     cursor: pointer;
+}
+.job-title-feature{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 3em;
+}
+.job-pay{
+    background-color: beige;
+    width: 10em;
+    text-align: center;
+    height: 3em;
+}
+.job-employment-type{
+    background-color: #f5f5f5;
+    width: 10em;
+    height: 3em;
+    text-align: center;
+}
+.current-job-header{
+    box-shadow:     0 0 10px 0 rgba(0,0,0,0.1);
+    width: 100%;
+    padding: 2em;
+}
+.current-job-description{
+    padding: 2em;
+    border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
+}
+.current-job-pay{
+    padding: 2em;
+    border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
+}
+.current-job-experience{
+    padding: 2em;
+    border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
+}
+.current-job-education{
+    padding: 2em;
+    border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
 }
