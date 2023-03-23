@@ -1,0 +1,70 @@
+
+.land-nav-container{
+    height: 5em;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+.login-buttons{
+    
+}
+.login-btn{
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.login-btn:hover{
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+.signup-btn{
+   
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.land-nav-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgba(127, 249, 255, 0.112);
+}
+.land-nav-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+  }
+.land-nav-menu ul li{
+    padding: 1em;
+    cursor: pointer;
+    transition: all 0.1s ease;
+   font-weight: 500;
+   letter-spacing: 1.5px;
+   color: rgba(0, 0, 0, 0.652);
+    
+}
+.land-nav-menu ul li:hover{
+    background-color: rgba(127, 249, 255, 0.112);
+    border-bottom: 1px solid rgb(0, 149, 255) ;
+    border-radius: 5px ;
+}

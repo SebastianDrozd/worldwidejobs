@@ -1,6 +1,6 @@
 import React from 'react'
 import "../css/businessMyJobs.css"
-import { createStyles, Table, Progress, Anchor, Text, Group, ScrollArea, rem } from '@mantine/core';
+
 import { useSelector } from 'react-redux';
 import { useGetJobsByBusinessIdQuery } from '../redux/jobPost';
 const BusinessMyJobs = () => {

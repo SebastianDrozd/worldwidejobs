@@ -7,7 +7,7 @@ import { useGetUserInformationQuery } from '../redux/user/userApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { setUserState } from '../redux/slices/userSlice'
 import { setBusinessState } from '../redux/slices/businessSlice'
-import { NavbarMinimal } from '../component/ManTimeSidebar'
+
 import BusinessMyJobs from '../component/businessMyJobs'
 import BusinessMyCards from '../component/businessMyCards'
 const BusinessDashboard = () => {
@@ -34,7 +34,7 @@ const BusinessDashboard = () => {
   return (
     <>
     <div className="sidebar">
-    <NavbarMinimal/>
+    <SideBar/>
     </div>
     <div className="content">
      <div className="business-right-container">

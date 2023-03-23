@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../css/jobsPage.css"
 import { useGetJobPostsQuery } from '../redux/jobPost';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+
 import JobSearchBar from '../component/jobSearchBar';
 const JobsPage = () => {
     const { data, error, isLoading } = useGetJobPostsQuery();
