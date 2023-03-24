@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import "../css/jobsPage.css"
-import { useGetJobPostsQuery } from '../redux/jobPost';
+import { useGetJobPostSearchQuery, useGetJobPostsQuery } from '../redux/jobPost';
 
 import JobSearchBar from '../component/jobSearchBar';
+import { useParams } from 'react-router-dom';
 const JobsPage = () => {
-    const { data, error, isLoading } = useGetJobPostsQuery();
+
+    const url = window.location.href
+    const query = url.substring(url.indexOf('?') + 1);
+    //const { data, error, isLoading } = useGetJobPostsQuery();
+    const { data, error, isLoading } = useGetJobPostSearchQuery(query)
     const [currentJob,setCurrentJob] = useState(null)
     useEffect(() => {
         if(data && data.length > 0){
@@ -36,7 +41,8 @@ const JobsPage = () => {
                 <div className="job-search-left">
                     <div className="job-search-left-top">
                         <h1>Job Search</h1> 
-                        <p>Sort by : relevance - date</p>    
+                        <p>Sort by : relevance - date</p> 
+                        <p>{data.length} results found</p>   
                         </div>
                         <div className='job-search-results'>
                         {data && data.map((job) => (
@@ -65,10 +71,11 @@ const JobsPage = () => {
                  <div className="job-search-right">
                   
                  <div className="current-job-header">
-                 <h1>{ currentJob.job_title}</h1>
-                         <p>{currentJob.name}</p>
-                         <h4>Chicago,Il</h4>
+                 <h3 className='job-title'>{ currentJob.job_title}</h3>
+                         <p className='job-company'>{currentJob.name}</p>
+                         <p className='job-location'>Chicago,Il</p>
                          <p>{currentJob.job_employment_type}</p>
+                         <button>Apply now</button>
                      
                  </div>
                  <div className="right-wrapper">

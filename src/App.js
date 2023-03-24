@@ -7,7 +7,7 @@ import {
 
 import ConfirmPage from './routes/confirmPage';
 import RegisterUser from './routes/registerUser';
-import Login from './routes/Login';
+import Login from './routes/login';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshToken } from './utils/requests';
 import { setLoggedIn } from './redux/slices/userSlice';
