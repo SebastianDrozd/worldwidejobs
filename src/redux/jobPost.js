@@ -26,8 +26,15 @@ export const jobPostApiSlice = apiSlice.injectEndpoints({
                 url : `/jobs/search/query?${searchQuery}`,
                 method : 'GET'
             })
+        }),
+        getJobTitles : builder.mutation({
+            query: (formData) => ({
+                url : '/jobs/titles',
+                method : 'POST',
+                body : formData     
+    
         })
     }),
-
+    }),
 });
-export const {useCreateJobPostMutation,useGetJobPostsQuery,useGetJobsByBusinessIdQuery,useGetJobPostSearchQuery} = jobPostApiSlice;
+export const {useCreateJobPostMutation,useGetJobPostsQuery,useGetJobsByBusinessIdQuery,useGetJobPostSearchQuery,useGetJobTitlesMutation} = jobPostApiSlice;

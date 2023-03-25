@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import "../css/jobsPage.css"
 import { useGetJobPostSearchQuery, useGetJobPostsQuery } from '../redux/jobPost';
-
+import { useLocation } from 'react-router-dom';
 import JobSearchBar from '../component/jobSearchBar';
 import { useParams } from 'react-router-dom';
 const JobsPage = () => {
-
+    const location = useLocation();
+    console.log(location)
     const url = window.location.href
     const query = url.substring(url.indexOf('?') + 1);
     //const { data, error, isLoading } = useGetJobPostsQuery();

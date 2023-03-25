@@ -26,7 +26,7 @@
 .input-group{
     display: flex;
     justify-content: space-evenly;
-    width: 75%;
+    width: 50%;
     margin: 0 auto;
     padding: 0em 1em;
     
@@ -34,8 +34,8 @@
     border-radius: 40px;
 }
 .input-group .job-type{
-    width: 50%;
-    margin-right: 20px;
+    width: 25em;
+  
 }
 .input-group .place{
     width: 100%;
@@ -55,6 +55,17 @@
     
 }
 .location-dropdown-list{
+    max-height: 10em;
+    overflow-y: scroll;
+    background-color: aliceblue;
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid rgb(92, 43, 226);
+    min-width: 90%;
+    max-width: 90%;
+
+}
+.job-type-dropdown-list{
     max-height: 10em;
     overflow-y: scroll;
     background-color: aliceblue;
