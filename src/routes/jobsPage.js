@@ -31,6 +31,8 @@ const JobsPage = () => {
         console.log("this is current job",currentJob)
         setCurrentJob(data.filter((jobPost) => jobPost.job_id == job)[0])
     }
+
+  
     return (
         <>
         <br />

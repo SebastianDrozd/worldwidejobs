@@ -29,7 +29,7 @@
     width: 75%;
     margin: 0 auto;
     padding: 0em 1em;
-  
+    
     padding: 2em;
     border-radius: 40px;
 }
@@ -38,7 +38,7 @@
     margin-right: 20px;
 }
 .input-group .place{
-    width: 30%;
+    width: 100%;
     margin-right: 20px;
 }
 .search{
@@ -50,3 +50,60 @@
     border-color: 1px solid rgb(92, 43, 226)  !important        ;
     
 }
+
+.location-div{
+    
+}
+.location-dropdown-list{
+    max-height: 10em;
+    overflow-y: scroll;
+    background-color: aliceblue;
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid rgb(92, 43, 226);
+    min-width: 90%;
+    max-width: 90%;
+
+}
+.landing-page-search-button{
+    height: fit-content;
+    margin-top: 1em;
+
+}
+
+.dropdown-item{
+    font-size: 1em;
+    font-weight: 400;
+    color: rgb(92, 43, 226);
+    padding: 0.5em;
+    cursor: pointer;
+}
+.dropdown-item:hover{
+    background-color: rgb(92, 43, 226);
+    color: aliceblue;
+}
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
