@@ -1,20 +1,21 @@
 import React, { useRef,useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../css/createJobPostForm/createJobPostingPage5.css";
+import { setDeleteRequirements, setJobRequirements } from "../../redux/slices/createJobPostSlice";
 
 const CJPostForm5 = ({ setFormData, formData }) => {
   const [requirements, setRequirements] = useState([]);
   const [newRequirement, setNewRequirement] = useState("");
+  const reqs = useSelector((state) => state.createJobPost.requirements);
  const dispatch = useDispatch()
   const req = useRef();
   function handleRequirementAdd(event) {
     event.preventDefault();
     if (req.current.value.trim() !== "") {
       setRequirements([...requirements, req.current.value]);
+      dispatch(setJobRequirements(req.current.value))
       setNewRequirement("");
-      
-      
     }
     console.log(requirements);
   }
@@ -25,6 +26,7 @@ const CJPostForm5 = ({ setFormData, formData }) => {
   const handleDeleteRequirement = (index) => {
     const newRequirements = [...requirements];
     newRequirements.splice(index, 1);
+    dispatch(setDeleteRequirements(index))
     setRequirements(newRequirements);
   }
   return (
@@ -49,9 +51,9 @@ const CJPostForm5 = ({ setFormData, formData }) => {
           </button>
         </div>
         {
-            requirements.length > 0 && 
+            reqs.length >  0 && 
             <div className="requirements-list">
-            {requirements.map((requirement,index) => (
+            {reqs.map((requirement,index) => (
                 <div className="requirement-item">
                     <p>{requirement}</p> 
                     <button onClick={() => handleDeleteRequirement(index)} className="delete-requirement-btn">X</button>

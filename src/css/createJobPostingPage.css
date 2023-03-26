@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 10px;
+    position: relative;
 }
 .create-job-form{
     display: flex;
@@ -47,6 +48,7 @@
     color: rgb(255, 255, 255);
     margin-bottom: 0.5em;
     text-align: center;
+    
 }
 .header-create-job p{
     line-height: 20%;
@@ -56,4 +58,5 @@
     margin-bottom: 2em;
     color: aliceblue;
     text-align: center;
+   
 }

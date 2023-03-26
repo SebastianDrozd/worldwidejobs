@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-
+import "../../css/createJobPostForm/createJobPostingPage3.css"
 const CJPostForm3 = ({ formData, setFormData }) => {
   const jobExperience = useRef();
   const jobEducation = useRef();
@@ -10,9 +10,11 @@ const CJPostForm3 = ({ formData, setFormData }) => {
     setFormData({ ...formData, jobEducation: e.target.value })
   }
   return (
-    <div>
-      <h4>Job Experience</h4>
-      <label for="cars">Job experience needed:</label>
+    <div className='wrapper-container-3'>
+      <div className="cjpf1-header">
+        <h4>Job Experience & Education</h4>
+      </div>
+      <label className='label-3' for="cars">Job experience needed:</label>
       <select onChange={handleJobExperience} ref={jobExperience} name="cars" id="cars">
         <option value="0 years">0 years</option>
         <option value="1-2 years">1-2 years</option>
@@ -21,8 +23,8 @@ const CJPostForm3 = ({ formData, setFormData }) => {
       </select>
       <br />
       <br />
-      <h4>Job Education</h4>
-      <label for="cars">Job education needed:</label>
+      
+      <label className='label-3' for="cars">Job education needed:</label>
       <select onChange={handleJobEducation} ref={jobEducation} name="cars" id="cars">
         <option value="No education necessary">No education necessary</option>
         <option value="High School / Secondary School">High School / Secondary School</option>

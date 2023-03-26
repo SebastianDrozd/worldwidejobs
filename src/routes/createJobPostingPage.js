@@ -15,6 +15,7 @@ const CreateJobPostingPage = () => {
   const [page, setPage] = useState(0);
   const businessAddress = useSelector(state => state.business.address)
   const businessId = useSelector(state => state.business.businessId)
+  const requirements = useSelector(state => state.createJobPost.requirements)
   const [formData, setFormData] = useState({
     jobTitle: "",
     jobDescription: "",
@@ -80,12 +81,16 @@ const CreateJobPostingPage = () => {
           job_country: formData.address.businessCountry,
           job_postal_code: formData.address.businessPostalCode,
         },
-        requirements: {
-        }
+        requirements: requirements
       }
       console.log("this is object that will be sent to backend ", jobPosting)
-      const response = await createJobPost(jobPosting).unwrap();
-      console.log(response)
+      try{
+        const response = await createJobPost(jobPosting).unwrap();
+        console.log(response)
+      }catch(error){
+        console.log(error)
+      }
+      
     }
 
     if (page == 1) {

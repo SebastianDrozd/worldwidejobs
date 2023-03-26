@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../../css/createJobPostForm/createJobPostingPage4.css"
 const CJPostForm4 = ({ formData, setFormData }) => {
   const handleCurrencyChange = (e) => {
     setFormData({ ...formData, jobCurrency: e.target.value })
@@ -11,8 +11,10 @@ const CJPostForm4 = ({ formData, setFormData }) => {
     setFormData({ ...formData, jobPayFrequency: e.target.value })
   }
   return (
-    <div>
-      <h4>Job Compensation</h4>
+    <div className='wrapper-container-4'>
+     <div className="cjpf1-header">
+        <h4>Job Compensation</h4>
+      </div>
       <select onChange={handleCurrencyChange} id="currency" name="currency">
         <option style={{ width: "100%" }}>select currency</option>
         <option value="AFN">Afghan Afghani</option>
@@ -181,14 +183,18 @@ const CJPostForm4 = ({ formData, setFormData }) => {
         <option value="ZMK">Zambian Kwacha</option>
       </select>
 
-      <input onChange={(e) => { setFormData({ ...formData, jobSalary: e.target.value }) }} type="text" name="businessName" placeholder="Job salary" />
-      <label for="cars">Pay type:</label>
+
+      <input onChange={(e) => { setFormData({ ...formData, jobSalary: e.target.value }) }} type="text" name="businessName" placeholder="Job salary/hourly rate" />
+      <br/>
+      <br/>
+      <br/>
+      <label className='label-4' for="cars">Pay type:</label>
       <select onChange={handlePayTypeChange} name="cars" id="cars">
         <option value="hourly">hourly</option>
         <option value="yearly">yearly</option>
         
       </select>
-      <label for="cars">Pay frequency</label>
+      <label className='label-4' for="cars">Pay frequency</label>
       <select onChange={handlePayFrequencyChange} name="cars" id="cars">
         <option value="daily">daily</option>
         <option value="weekly">weekly</option>

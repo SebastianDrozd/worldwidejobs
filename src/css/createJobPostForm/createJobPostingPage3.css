@@ -1,0 +1,33 @@
+.wrapper-container-3{
+    font-family: 'Montserrat', sans-serif;
+    width: 35vw;
+    padding: 2em;
+    margin-bottom: 1em;
+    border-radius: 20px;
+}
+.wrapper-container-3 select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .wrapper-container-3 button {
+    margin-top: 10px;
+    background-color: #2F80ED;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .label-3{
+    font-size: 1em;
+    font-weight: 300;
+    color: aliceblue;
+    margin-bottom: 1em;
+    
+  }
