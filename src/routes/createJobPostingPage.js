@@ -16,6 +16,7 @@ const CreateJobPostingPage = () => {
   const businessAddress = useSelector(state => state.business.address)
   const businessId = useSelector(state => state.business.businessId)
   const requirements = useSelector(state => state.createJobPost.requirements)
+  const [showToast, setShowToast] = useState(false)
   const [formData, setFormData] = useState({
     jobTitle: "",
     jobDescription: "",
@@ -87,6 +88,11 @@ const CreateJobPostingPage = () => {
       try{
         const response = await createJobPost(jobPosting).unwrap();
         console.log(response)
+        setShowToast(true)
+       return setTimeout(() => {
+          setShowToast(false)
+          navigate('/bDashboard')
+        }, 5000)
       }catch(error){
         console.log(error)
       }
@@ -101,6 +107,19 @@ const CreateJobPostingPage = () => {
   }
   return (
     <>
+    {
+      showToast && <div class="toast">
+      <div class="toast-content">
+        <div class="toast-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-message">
+          Job post created successfully!
+        </div>
+        <div class="toast-line"></div>
+      </div>
+    </div>
+    }
       <div className="createjobpage-container">
         <div className='header-create-job'>
         <h1>Create a new Job</h1>
