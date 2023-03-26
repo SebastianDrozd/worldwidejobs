@@ -24,11 +24,13 @@
   top: 16px;
   height: -webkit-max-content;
   height: -moz-max-content;
-  height: max-content;
+  height: calc(100vh - 20px);
   border: 2px solid rgba(0, 0, 0, 0.172);
   border-radius: 10px;
 }
 .right-wrapper {
+  padding: 1rem;
+  height: 600px;
   overflow-y: scroll;
 }
 .job-search-left-top {
@@ -71,29 +73,29 @@
   text-align: center;
 }
 .current-job-header {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px;
   width: 100%;
-  
   padding: 2em 1em;
   letter-spacing: 1px;
+  position: relative;
 }
 .job-location{
 
 }
 .current-job-description {
-  padding: 2em;
+  padding: 1em;
   border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
 }
 .current-job-pay {
-  padding: 2em;
+  padding: 1em;
   border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
 }
 .current-job-experience {
-  padding: 2em;
+  padding: 1em;
   border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
 }
 .current-job-education {
-  padding: 2em;
+  padding: 1em;
   border-bottom: 1 px solid rgba(0, 0, 0, 0.171);
 }
 .job-company {

@@ -4,6 +4,7 @@ import "../css/landingPage.css";
 import axios from "axios";
 import { useGetLocationMutation } from "../redux/locationFinder";
 import { useGetJobTitlesMutation } from "../redux/jobPost";
+import SearchBar from "../component/searchbar/SearchBar";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -56,62 +57,9 @@ const LandingPage = () => {
         <p className="title-sub">
           Your premier destination for jobs worldwide!
         </p>
-        <div className="input-group">
-          <div>
-            <input
-              onChange={handleJobType}
-              ref={keyword}
-              placeholder="Search by job type,tags, or description"
-              className="job-type search"
-              type="text"
-            />
-            {jobTitles.length > 0 && (
-              <div className="job-type-dropdown-list">
-                {jobTitles.map((jobTitle) => (
-                  <>
-                  <p className="dropdown-item">{jobTitle.job_title}</p>
-                  </>
-                ))}
-              </div>
-            )}
-          </div>
 
-          <div className="location-div">
-            <input
-              onChange={handleLocation}
-              ref={location}
-              placeholder="Search by location or remote"
-              className="place search"
-              type="text"
-            />
+    <SearchBar/>
 
-            {isLoading && <div class="lds-dual-ring"></div>}
-
-            {locations.length > 0 && (
-              <div className="location-dropdown-list">
-                {locations.map((location) => (
-                  <>
-                    {location.city != undefined &&
-                      location.country != undefined &&
-                      location.state != undefined && (
-                        <p
-                          onClick={() => handleItemClick(location)}
-                          className="dropdown-item"
-                        >
-                          {location.city && location.city},
-                          {location.state && location.state},
-                          {location.country && location.country}
-                        </p>
-                      )}
-                  </>
-                ))}
-              </div>
-            )}
-          </div>
-          <button className="landing-page-search-button" onClick={handleSearch}>
-            Search
-          </button>
-        </div>
       </div>
     </>
   );
