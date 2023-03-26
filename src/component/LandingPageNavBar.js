@@ -1,14 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/landingPageNavBar.css";
 const LandingPageNavBar = () => {
+  const handleLogin = () => {
+    //use the window because we are outside of the router component
+    window.location.href = "/login";
+  }
+  const handleHome = () => {
+    //use the window because we are outside of the router component
+    window.location.href = "/";
+  }
   return (
     <>
       <div className="land-nav-container">
         <div className="land-nav-logo">
-          <h2>World Wide Jobs</h2>
+          <h2 onClick={handleHome}>World Wide Jobs</h2>
         </div>
         <div className='login-buttons'>
-        <button className='login-btn'>Login</button>
+        <button onClick={handleLogin} className='login-btn'>Login</button>
         <button className='signup-btn'>Sign Up</button>
     </div>
    

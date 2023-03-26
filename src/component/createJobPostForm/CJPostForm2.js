@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
-import "../../css/createJobPostForm/createJobPostPage2.css"
+import "../../css/createJobPostForm/createJobPostingPage2.css"
 const CJPostForm2 = ({ setFormData, formData }) => {
   const select = useRef()
   const [wantsCustom,setWantsCustom] = useState(false);
@@ -46,9 +46,12 @@ const handleEmploymentType = (e) => {
 }
   return (
     <div>
-      <h4>Job Location</h4>
+       <div className="cjpf1-header">
+        <h4>Job Location</h4>
+      </div>
+      <div className='wrapper-container'>
       <div className='job-location-container'>
-        <label for="cars">Choose location</label>
+        <label className='label-2' for="cars">Choose location</label>
         <select onChange={handleSelectButton} name="cars" id="cars">
           <option >Choose my job location</option>
           <option value="default">Use My business Location</option>
@@ -56,7 +59,7 @@ const handleEmploymentType = (e) => {
           <option value="remote">Remote</option>
         </select>
       </div>
-      <label for="cars">Job employment type:</label>
+      <label className='label-2' for="cars">Job employment type:</label>
       <select onChange={handleEmploymentType} ref={jobEmploymentType} name="cars" id="cars">
         <option value="Part Time">Part time</option>
         <option value="Full Time">Full time</option>
@@ -86,6 +89,7 @@ const handleEmploymentType = (e) => {
 
       <button onClick = {handleSaveAddress}>Save</button>
         </div>}
+        </div>
     </div>
   )
 }

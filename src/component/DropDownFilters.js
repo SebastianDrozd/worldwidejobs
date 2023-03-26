@@ -4,7 +4,7 @@ const DropDownFilters = () => {
   return (
     <div class="dropdown-container">
       <div class="dropdown">
-        <button class="dropdown-btn">Date Posted</button>
+        <button class="dropdown-btn">Date Posted  <i class="fas fa-file-alt"></i></button>
         <div class="dropdown-content-filter">
           <a href="#">Option 1</a>
           <a href="#">Option 2</a>
@@ -12,7 +12,7 @@ const DropDownFilters = () => {
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropdown-btn">Job Type</button>
+        <button class="dropdown-btn">Job Type <i class="fas fa-file-alt"></i></button>
         <div class="dropdown-content-filter">
           <a href="#">Option 1</a>
           <a href="#">Option 2</a>
@@ -20,7 +20,7 @@ const DropDownFilters = () => {
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropdown-btn">Experience level</button>
+        <button class="dropdown-btn">Experience level <i class="fas fa-file-alt"></i></button>
         <div class="dropdown-content-filter">
           <a href="#">Option 1</a>
           <a href="#">Option 2</a>
@@ -28,7 +28,7 @@ const DropDownFilters = () => {
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropdown-btn">Sort By</button>
+        <button class="dropdown-btn">Sort By <i class="fas fa-file-alt"></i></button>
         <div class="dropdown-content-filter">
           <a href="#">Option 1</a>
           <a href="#">Option 2</a>

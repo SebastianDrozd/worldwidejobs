@@ -5,6 +5,7 @@ import CJPostForm1 from '../component/createJobPostForm/CJPostForm1'
 import CJPostForm2 from '../component/createJobPostForm/CJPostForm2'
 import CJPostForm3 from '../component/createJobPostForm/CJPostForm3'
 import CJPostForm4 from '../component/createJobPostForm/CJPostForm4'
+import CJPostForm5 from '../component/createJobPostForm/CJPostForm5'
 import "../css/createJobPostingPage.css"
 import { useCreateJobPostMutation } from '../redux/jobPost'
 const CreateJobPostingPage = () => {
@@ -45,14 +46,17 @@ const CreateJobPostingPage = () => {
       case 1:
         return <CJPostForm2 formData={formData} setFormData={setFormData} />;
       case 2:
-        return <CJPostForm3 formData={formData} setFormData={setFormData} />
+        
+        return <CJPostForm5 formData={formData} setFormData={setFormData} />
       case 3:
-        return <CJPostForm4 formData={formData} setFormData={setFormData} />
+        return <CJPostForm3 formData={formData} setFormData={setFormData} />
+        case 4:
+          return <CJPostForm4 formData={formData} setFormData={setFormData} />
 
     }
   }
   const handleSubmit = async () => {
-    if (page === 3) {
+    if (page === 4) {
       console.log("submit")
       console.log("this will be object that will be sent")
       let jobPosting = {
@@ -76,6 +80,8 @@ const CreateJobPostingPage = () => {
           job_country: formData.address.businessCountry,
           job_postal_code: formData.address.businessPostalCode,
         },
+        requirements: {
+        }
       }
       console.log("this is object that will be sent to backend ", jobPosting)
       const response = await createJobPost(jobPosting).unwrap();
@@ -90,15 +96,17 @@ const CreateJobPostingPage = () => {
   }
   return (
     <>
-      <div className="createbusinesspage-container">
+      <div className="createjobpage-container">
+        <div className='header-create-job'>
         <h1>Create a new Job</h1>
         <p>Post your job in a few easy steps!</p>
-        <div className='create-business-form'>
+        </div>
+        <div className='create-job-form'>
           {conditionalComponent()}
           <div>
             {page > 0 && <button onClick={() => setPage(page - 1)}>Back</button>}
             <button onClick={handleSubmit}>
-              {page === 0 || page === 1 || page == 2 ? "Next" : "Submit"}
+              {page === 0 || page === 1 || page == 2  || page == 3? "Next" : "Submit"}
             </button>
           </div>
 

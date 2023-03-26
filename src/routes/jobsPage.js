@@ -9,6 +9,7 @@ import JobSearchBar from "../component/jobSearchBar";
 import { useParams } from "react-router-dom";
 import SearchBar from "../component/searchbar/SearchBar";
 import DropDownFilters from "../component/DropDownFilters";
+import JobCard from "../component/JobCard";
 const JobsPage = () => {
   const location = useLocation();
   console.log(location);
@@ -22,10 +23,8 @@ const JobsPage = () => {
       //set the default job to the first job in the list
       setCurrentJob(data[0]);
     }
-  }, []);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  }, [data]);
+
   if (error) {
     return <div>Something went wrong</div>;
   }
@@ -41,83 +40,123 @@ const JobsPage = () => {
     <>
       <br />
       <SearchBar />
-    <DropDownFilters/>
+      <DropDownFilters />
+      <div className="color-seperator"></div>
       <div className="job-search-container">
         <div className="job-search-left">
-          <div className="job-search-left-top">
-            <h1>Job Search</h1>
-            <p>Sort by : relevance - date</p>
-            <p>{data.length} results found</p>
+          <div class="listing-header">
+            <div class="listing-header-left">
+              <h2 class="listing-header-title">Open Positions</h2>
+              <span class="listing-header-count">12 jobs found</span>
+            </div>
+            <div class="listing-header-right">
+              <span class="listing-header-sort">Sort by:</span>
+              <a href="#" class="listing-header-sort-link">
+                Relevance
+              </a>
+              <span class="listing-header-divider">|</span>
+              <a href="#" class="listing-header-sort-link">
+                Date
+              </a>
+            </div>
           </div>
+
           <div className="job-search-results">
+            {isLoading && 
+             <div class="job-post-skeleton">
+             <div class="job-post-skeleton__header">
+               <div class="job-post-skeleton__company"></div>
+               <div class="job-post-skeleton__location"></div>
+             </div>
+             <div class="job-post-skeleton__body">
+               <div class="job-post-skeleton__title"></div>
+               <div class="job-post-skeleton__description"></div>
+               <div class="job-post-skeleton__requirements"></div>
+             </div>
+           </div>}
             {data &&
               data.map((job) => (
                 <>
-                  <div
-                    onClick={() => {
-                      handleCurrentJob(job.job_id);
-                    }}
-                    className="job-card"
-                  >
-                    <h4>{job.job_title}</h4>
-                    <p>{job.name}</p>
-                    <div className="job-title-feature">
-                      <div className="job-pay">
-                        <p>
-                          {job.job_salary} {job.job_currency}{" "}
-                          {job.job_pay_frequency}
-                        </p>
+                  {isLoading ? (
+                    <div class="job-post-skeleton">
+                      <div class="job-post-skeleton__header">
+                        <div class="job-post-skeleton__company"></div>
+                        <div class="job-post-skeleton__location"></div>
                       </div>
-                      <div className="job-employment-type">
-                        <p>{job.job_employment_type}</p>
+                      <div class="job-post-skeleton__body">
+                        <div class="job-post-skeleton__title"></div>
+                        <div class="job-post-skeleton__description"></div>
+                        <div class="job-post-skeleton__requirements"></div>
                       </div>
                     </div>
-                    <p>{job.job_description}</p>
-                  </div>
+                  ) : (
+                    <JobCard job={job} handleCurrentJob={handleCurrentJob} />
+                  )}
                 </>
               ))}
           </div>
         </div>
         {currentJob && (
           <div className="job-search-right">
-            <div className="current-job-header">
-              <h3 className="job-title">{currentJob.job_title}</h3>
+            {/*  <h3 className="job-title">{currentJob.job_title}</h3>
               <p className="job-company">{currentJob.name}</p>
               <p className="job-location">Chicago,Il</p>
               <p>{currentJob.job_employment_type}</p>
-              <button>Apply now</button>
+              <button>Apply now</button> */}
+            <div class="job-header">
+              <div class="job-header-info">
+                <h1 class="job-title">{currentJob.job_title}</h1>
+                <p class="job-location">San Francisco, CA</p>
+                <p class="job-type">{currentJob.job_employment_type}</p>
+              </div>
+              <div class="job-header-btns">
+                <button class="job-header-apply">Apply</button>
+                <button class="job-header-save">Save</button>
+              </div>
             </div>
+
             <div className="right-wrapper">
-              <div className="current-job-description">
-                <h1>Job Description</h1>
-                <p>{currentJob.job_description}</p>
+              <div className="job-post-body">
+                <h3>
+                  <i class="fas fa-file-alt"></i> Job Description
+                </h3>
+                <p>{currentJob.job_description} </p>
               </div>
-              <div className="current-job-pay">
-                <h1>Pay</h1>
+              <hr />
+              <div className="job-post-body">
+                <h3>
+                  <i style={{ color: "green" }} class="fas fa-check-circle"></i>{" "}
+                  Job Requirements
+                </h3>
                 <p>
-                  {currentJob.job_salary} {currentJob.job_currency}{" "}
-                  {currentJob.job_pay_frequency}
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  volutpat ultricies nibh. Sed finibus enim mauris, at commodo
+                  metus aliquet a. Nulla facilisi. Sed vitae urna lectus.{" "}
                 </p>
+                <ul className="ul-req">
+                  <li>Experience with React</li>
+                  <li>Experience with Redux</li>
+                  <li>Experience with React</li>
+                  <li>Experience with Redux</li>
+                </ul>
               </div>
-              <div className="current-job-experience">
-                <h1>Experience</h1>
-                <p>{currentJob.job_experience}</p>
+              <hr />
+              <div className="job-post-body">
+                <h3>
+                  <i style={{ color: "red" }} class="fas fa-school"></i> Job
+                  Education
+                </h3>
+                <p>{currentJob.job_education} </p>
               </div>
-              <div className="current-job-education">
-                <h1>Experience</h1>
-                <p>{currentJob.job_education}</p>
-              </div>
-              <div className="current-job-education">
-                <h1>Experience</h1>
-                <p>{currentJob.job_education}</p>
-              </div>
-              <div className="current-job-education">
-                <h1>Experience</h1>
-                <p>{currentJob.job_education}</p>
-              </div>
-              <div className="current-job-education">
-                <h1>Experience</h1>
-                <p>{currentJob.job_education}</p>
+              <hr />
+              <div className="job-post-body">
+                <h3>
+                  <i style={{ color: "orange" }} class="fas fa-briefcase"></i>{" "}
+                  Job Pay
+                </h3>
+                <p>
+                  {currentJob.job_currency} {currentJob.job_salary}{" "}
+                </p>
               </div>
             </div>
           </div>

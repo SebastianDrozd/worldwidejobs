@@ -1,0 +1,55 @@
+.job-requirements-container{
+
+    margin-bottom: 2em;
+    width: 35vw;
+}
+
+.heading-sub{
+    line-height: 20%;
+    font-weight: 200;
+    opacity: 0.7;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    color: aliceblue;
+    text-align: center;
+}
+.add-requirement-btn{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1em;
+    margin-left: 10px;
+}
+.cj5-button{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+.requirements-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 2em;
+   
+}
+.requirement-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    background: #ffffff;
+    width: 75%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1em;
+}
