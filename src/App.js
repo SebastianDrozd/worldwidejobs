@@ -36,15 +36,13 @@ function App() {
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/login" element={<Login />} />
           <Route path = "/jobs/:query" element={<JobsPage/>}/>
-          <Route path='/uDashboard' element={
-            <RequireAuth allowedRoles={"user"}>
-              <UserDashboard />
-            </RequireAuth>
-          } />
           <Route element={<RequireAuth allowedRoles={"business"} />}>
             <Route path="/bDashboard" element={<BusinessDashboard />} />
             <Route path = "bcreateBusiness" element={<CreateBusinessPage/>}/>
             <Route path = "createNewJob" element={<CreateJobPostingPage/>}/>
+          </Route>
+          <Route element={<RequireAuth allowedRoles={"user"} />}>
+            <Route path="/uDashboard" element={<UserDashboard />} />
           </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />

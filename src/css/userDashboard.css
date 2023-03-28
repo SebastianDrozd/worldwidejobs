@@ -1,0 +1,40 @@
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .dashboard-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .dashboard-section {
+    flex: 1;
+    max-width: 350px;
+  }
+  
+  .dashboard-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-section-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-section-header a {
+    color: #777;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
