@@ -4,13 +4,14 @@ import {
   useGetJobPostSearchQuery,
   useGetJobPostsQuery,
 } from "../redux/jobPost";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import JobSearchBar from "../component/jobSearchBar";
 import { useParams } from "react-router-dom";
 import SearchBar from "../component/searchbar/SearchBar";
 import DropDownFilters from "../component/DropDownFilters";
 import JobCard from "../component/JobCard";
 const JobsPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
   const url = window.location.href;
@@ -35,6 +36,11 @@ const JobsPage = () => {
     console.log("this is current job", currentJob);
     setCurrentJob(data.filter((jobPost) => jobPost.job_id == job)[0]);
   };
+
+
+  const handleApply = (id) => {
+    navigate(`/applyJob/${id}`, { state: { job: currentJob } });
+  }
 
   return (
     <>
@@ -110,7 +116,7 @@ const JobsPage = () => {
                 <p class="job-type">{currentJob.job_employment_type}</p>
               </div>
               <div class="job-header-btns">
-                <button class="job-header-apply">Apply</button>
+                <button onClick={() => handleApply(currentJob.job_id)} class="job-header-apply">Apply</button>
                 <button class="job-header-save">Save</button>
               </div>
             </div>

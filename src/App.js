@@ -25,7 +25,7 @@ import CreateBusinessPage from './routes/createBusinessPage';
 import CreateJobPostingPage from './routes/createJobPostingPage';
 import JobsPage from './routes/jobsPage';
 import LandingPageNavBar from './component/LandingPageNavBar';
-
+import ApplyJobPage from './routes/applyJobPage';
 
 function App() {
   return (
@@ -43,6 +43,8 @@ function App() {
           </Route>
           <Route element={<RequireAuth allowedRoles={"user"} />}>
             <Route path="/uDashboard" element={<UserDashboard />} />
+            <Route path = "applyJob/:jobId" element={<ApplyJobPage/>}/>
+          
           </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />
