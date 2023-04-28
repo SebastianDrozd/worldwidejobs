@@ -8,7 +8,13 @@ export const jobApplicationApiSlice = apiSlice.injectEndpoints({
                 method: "POST",
                 body: jobApplication,
             }),
+        }),
+        getUserJobApplications : builder.query({
+            query: (userId) => ({
+                url: `jobApplications/users/${userId}`,
+                method: "GET",  
+            })
         })
     }),
 });
-export const { useSubmitJobApplicationMutation } = jobApplicationApiSlice;
+export const { useSubmitJobApplicationMutation,useGetUserJobApplicationsQuery } = jobApplicationApiSlice;
