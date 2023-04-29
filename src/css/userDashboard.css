@@ -1,5 +1,6 @@
 .user-dashboard-layout-wrapper{
-  width: 75%;
+  display: flex;
   margin: 0 auto;
-  margin-top: 1em;
+  margin-top: 2em;
+  width: 75%;
 }

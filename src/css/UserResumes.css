@@ -1,0 +1,33 @@
+.resumes-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(144, 144, 144);
+    border-radius: 40px;
+    padding: 2em;
+    margin-left: 1em;
+   
+}
+.resumes-list-wrapper{
+   
+    margin-top: 1em;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.resume-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid rgb(212, 210, 208);
+    border-radius: 0.5rem;
+    white-space: normal;
+   
+    padding:1em 5em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1em;
+}
+.added{
+    display: block;
+}

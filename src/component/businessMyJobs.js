@@ -17,7 +17,7 @@ const BusinessMyJobs = () => {
     return (
         <>
             <div className="businessMyJobs-container">
-                <h1 className='my-jobs-title'>My Jobs</h1>
+                <h2 className='my-jobs-title'>My Active Jobs</h2>
                 <table className='my-jobs-table'>
                     <tr>
                         <th>Job Title</th>

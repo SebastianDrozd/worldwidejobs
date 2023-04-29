@@ -8,7 +8,7 @@ const ApplyJobPage = () => {
   const [submitJobApplication, { isLoading, error }] =
     useSubmitJobApplicationMutation();
   console.log("this is the location", location.state);
-  const userId = useSelector((state) => state.auth.user);
+  const userId = useSelector((state) => state.user.id);
   const [showToast, setShowToast] = useState(false);
 
   const handleApply = () => {

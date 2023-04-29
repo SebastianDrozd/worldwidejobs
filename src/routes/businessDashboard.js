@@ -10,6 +10,8 @@ import { setBusinessState } from '../redux/slices/businessSlice'
 
 import BusinessMyJobs from '../component/businessMyJobs'
 import BusinessMyCards from '../component/businessMyCards'
+import BusinessRecentApplied from '../component/BusinessRecentApplied'
+
 const BusinessDashboard = () => {
   const dispatch = useDispatch()
   const email = useSelector (state => state.auth.user)
@@ -39,11 +41,12 @@ const BusinessDashboard = () => {
     <div className="content">
      <div className="business-right-container">
     <h1>Business Dashboard</h1>
-    <BusinessMyJobs/>
-    <br />
-    <br />
     <BusinessMyCards/>
     <br />
+    <br />
+    <BusinessMyJobs/>
+    <br />
+   <BusinessRecentApplied/>
     <p>Logged in as {email}</p>
     <LogoutButton></LogoutButton>
     <br />

@@ -8,6 +8,8 @@ import { useGetUserProfileInfoQuery } from '../redux/regUsers'
 import { setUserState } from '../redux/slices/userSlice'
 import RecentUserJobAppliedTable from '../component/RecentUserJobAppliedTable'
 import "../css/userDashboard.css"
+import UserDashboardProfile from '../component/UserDashboardProfile'
+import UserResumes from '../component/UserResumes'
 const UserDashboard = () => {
   const email = useSelector (state => state.auth.user);
   const {data,error,isLoading} = useGetUserProfileInfoQuery(email);
@@ -27,6 +29,9 @@ const UserDashboard = () => {
     <>
     <div className='user-dashboard-layout-wrapper'>
       <RecentUserJobAppliedTable/>
+     
+      <UserResumes/>
+      <button onClick={navigateHome}>Home</button>
     </div>
   
     </>
