@@ -36,7 +36,7 @@ const handleSaveAddress = (e) => {
       businessPostalCode: postalCode.current.value,
     }
   })
-  console.log(formData)
+
 }
 const handleEmploymentType = (e) => {
   setFormData({

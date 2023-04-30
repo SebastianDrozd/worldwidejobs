@@ -26,7 +26,7 @@ const RegisterUser = () => {
 
     const handleCaptcha = (value) => {
         setCaptchaToken(value)
-        console.log(value)
+
         captchaNotChecked(false)
         sendReCaptchaToken(value)
             .then(res => {
@@ -54,8 +54,6 @@ const RegisterUser = () => {
             return;
         }
         if (captchaToken.length < 10 ) {
-            console.log(captchaToken)
-            console.log("recaptcha is null")
             e.preventDefault();
             setCaptchaNotChecked(true)
             setTimeout(() => {
@@ -66,7 +64,6 @@ const RegisterUser = () => {
      
        
         else {
-            console.log("there are no errors")
             e.preventDefault();
             let user = {
                 firstname: firstName.current.value,
@@ -75,12 +72,11 @@ const RegisterUser = () => {
                 password: password.current.value,
                 type: type.current.value
             }
-            console.log(user)
             registerNewUser(user)
                 .then(res => {
-                    console.log(res)
+                   
                     setAccountSuccess(true)
-                    console.log("you have successfully registered, check your email")
+                
                 })
                 .catch(err => {
                     if (err.response.status == 409) {
@@ -121,7 +117,7 @@ const RegisterUser = () => {
                         {passwordError && <label className='error-label' for="Firstname">Your passwords do not match</label>}
                       
                         <select onChange={() => {
-                            console.log(type.current.value)
+            
                         }} ref={type} name="cars" id="cars">
                             <option value="none" selected disabled hidden>Select an Option</option>
                             <option value="user">User</option>

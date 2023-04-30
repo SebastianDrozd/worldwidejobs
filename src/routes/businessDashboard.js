@@ -28,7 +28,7 @@ const BusinessDashboard = () => {
   if(data[0].accountsetup == "false"){
     navigate('/bcreateBusiness')
   }
-  console.log(data)
+
  if (!isLoading){
     let bus = data[0];
     dispatch(setBusinessState({street:bus.street,city:bus.city,state_province:bus.state_province,country:bus.country,postal_code:bus.postal_code,id:bus.business_id}))

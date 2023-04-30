@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { useGetJobsByBusinessIdQuery } from '../redux/jobPost';
 const BusinessMyJobs = () => {
     const businessId = useSelector(state => state.business.businessId)
-    console.log("businessId: " + businessId)
     const { data, error, isLoading } = useGetJobsByBusinessIdQuery(businessId)
     if (isLoading) {
         return <div>Loading...</div>
@@ -13,7 +12,6 @@ const BusinessMyJobs = () => {
     if (error) {
         return <div>Something went wrong</div>
     }
-    console.log(data)
     return (
         <>
             <div className="businessMyJobs-container">

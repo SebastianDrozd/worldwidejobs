@@ -35,6 +35,13 @@ export const jobApplicationApiSlice = apiSlice.injectEndpoints({
             }),
             invalidatesTags: ['Applications'],
         }),
+        changeApplicationRejectedStatus : builder.mutation({
+            query: (applicationId) => ({
+                url: `jobApplications/${applicationId}/rejected`,
+                method: "POST",
+            }),
+            invalidatesTags: ['Applications'],
+        }),
     }),
 });
-export const { useSubmitJobApplicationMutation,useGetUserJobApplicationsQuery,useGetBusinessJobApplicationsQuery,useGetJobApplicationDetailsQuery ,useChangeApplicationViewedStatusMutation } = jobApplicationApiSlice;
+export const { useSubmitJobApplicationMutation,useGetUserJobApplicationsQuery,useGetBusinessJobApplicationsQuery,useGetJobApplicationDetailsQuery ,useChangeApplicationViewedStatusMutation,useChangeApplicationRejectedStatusMutation } = jobApplicationApiSlice;

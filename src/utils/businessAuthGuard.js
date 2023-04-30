@@ -11,7 +11,7 @@ const BusinessAuthGuard = () => {
         if(token){
             let result = false;
             decodedToken = JSON.parse(atob(token.split('.')[1]))
-            console.log(decodedToken)
+           
             if(decodedToken.aud == "business"){
                 result = true;
             }

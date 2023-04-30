@@ -59,8 +59,6 @@ const CreateJobPostingPage = () => {
   }
   const handleSubmit = async () => {
     if (page === 4) {
-      console.log("submit")
-      console.log("this will be object that will be sent")
       let jobPosting = {
         jobPost: {
           job_title: formData.jobTitle,
@@ -84,17 +82,17 @@ const CreateJobPostingPage = () => {
         },
         requirements: requirements
       }
-      console.log("this is object that will be sent to backend ", jobPosting)
+    
       try{
         const response = await createJobPost(jobPosting).unwrap();
-        console.log(response)
+      
         setShowToast(true)
        return setTimeout(() => {
           setShowToast(false)
           navigate('/bDashboard')
         }, 5000)
       }catch(error){
-        console.log(error)
+
       }
       
     }
@@ -102,7 +100,7 @@ const CreateJobPostingPage = () => {
     if (page == 1) {
 
     }
-    console.log(formData)
+   
     setPage(page + 1);
   }
   return (

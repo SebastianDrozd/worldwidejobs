@@ -3,13 +3,20 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import "../css/applyJobPage.css";
 import { useSubmitJobApplicationMutation } from "../redux/jobApplication";
+import { useGetUserResumesQuery } from "../redux/resumes";
 const ApplyJobPage = () => {
   const location = useLocation();
-  const [submitJobApplication, { isLoading, error }] =
-    useSubmitJobApplicationMutation();
-  console.log("this is the location", location.state);
+  const [submitJobApplication] = useSubmitJobApplicationMutation();
+ 
   const userId = useSelector((state) => state.user.id);
   const [showToast, setShowToast] = useState(false);
+  const { data, isLoading } = useGetUserResumesQuery(userId);
+  const [activeResume, setActiveResume] = useState(null);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+
 
   const handleApply = () => {
     let job = location.state.job;
@@ -77,6 +84,11 @@ const ApplyJobPage = () => {
               Choose file
             </label>
           </div>
+         
+            {data && data.map((resume) => (<>
+            <div onClick={() => setActiveResume(resume)} className="confirm-resume-div">{resume.resume_original_name}</div>
+            </>))}
+          
           <button onClick={handleApply} class="submit-btn">
             Submit application
           </button>

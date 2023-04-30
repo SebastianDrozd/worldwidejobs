@@ -17,7 +17,7 @@ const CJPostForm5 = ({ setFormData, formData }) => {
       dispatch(setJobRequirements(req.current.value))
       setNewRequirement("");
     }
-    console.log(requirements);
+   
   }
 
   function handleInputChange(event) {

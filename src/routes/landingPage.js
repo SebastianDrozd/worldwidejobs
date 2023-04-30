@@ -38,13 +38,13 @@ const LandingPage = () => {
       const response = await getJobTitles({
         jobTitle: keyword.current.value,
       }).unwrap();
-      console.log(response);
+    
       setJobTitles(response);
     }
   };
 
   const handleItemClick = (location2) => {
-    console.log("this is location", location2);
+   
     location.current.value =
       location2.city + "," + location2.state + "," + location2.country;
     setLocations([]);

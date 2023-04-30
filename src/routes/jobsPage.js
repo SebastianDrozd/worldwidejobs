@@ -13,7 +13,7 @@ import JobCard from "../component/JobCard";
 const JobsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+ 
   const url = window.location.href;
   const query = url.substring(url.indexOf("?") + 1);
   //const { data, error, isLoading } = useGetJobPostsQuery();
@@ -30,10 +30,9 @@ const JobsPage = () => {
     return <div>Something went wrong</div>;
   }
 
-  console.log(data);
+
   const handleCurrentJob = (job) => {
-    console.log(job);
-    console.log("this is current job", currentJob);
+
     setCurrentJob(data.filter((jobPost) => jobPost.job_id == job)[0]);
   };
 

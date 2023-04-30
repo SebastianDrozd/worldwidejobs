@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const RecentUserJobAppliedTable = () => {
   const navigate = useNavigate()
   const id = useSelector((state) => state.auth.user);
-  console.log("This is id", id);
+ 
   const { data, error, isLoading } = useGetUserJobApplicationsQuery(id);
   if (isLoading) {
     return <div>Loading...</div>;

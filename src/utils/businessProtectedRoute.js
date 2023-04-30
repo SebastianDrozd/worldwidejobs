@@ -7,9 +7,9 @@ const BusinessProtectedRoute = ({account,children}) => {
   useEffect(() => {
     if(localStorage.getItem('token')){
       const decode = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
-      console.log("this is decode in auth", decode)     
+      
       if(decode.aud === "business"){
-        console.log("this is business account")
+   
         setIsBusiness(true)
       }
     }

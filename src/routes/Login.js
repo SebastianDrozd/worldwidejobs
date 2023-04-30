@@ -25,7 +25,7 @@ const Login = () => {
     }
     try{
       const userData = await login(user).unwrap();
-      console.log("This is userdata",userData)
+     
       dispatch(setCredentials({user:userData.email,token:userData.token,type:userData.type}))
       if(userData.type == "user"){
         navigate('/uDashboard')
@@ -34,7 +34,7 @@ const Login = () => {
         navigate('/bDashboard')
       }
     } catch(err){
-      console.log("this is error message",err)
+  
       if(err.status == 404){
         setUserNotFoundError(true)
         setTimeout(() => {
@@ -90,7 +90,7 @@ const Login = () => {
   const handleRefreshToken = (e) => {
     e.preventDefault();
     refreshToken().then(res => {
-      console.log(res.data.accessToken)
+   
       setResponse(res.data.accessToken)
     })
   }
@@ -119,7 +119,7 @@ const Login = () => {
               </div>
               <span>or use your account</span>
               {userNotFoundError && <p style={{color:'red'}}>A user could not be found with that email</p>}
-              <input ref={email} type="email" placeholder="Email" value="srankoin3@localhost" />
+              <input ref={email} type="email" placeholder="Email" value="srankoin2@localhost" />
               <input ref={password} type="password" placeholder="Password" value="12345" />
               {wrongPasswordError && <p style={{color:'red'}}>You have entered an incorrect password for this account</p>}
               <a href="#">Forgot your password?</a>

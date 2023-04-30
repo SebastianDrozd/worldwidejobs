@@ -11,9 +11,9 @@ const UserProtectedRoute = ({ account, children }) => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       const decode = JSON.parse(atob(localStorage.getItem('token').split('.')[1]));
-      console.log("this is decode in auth", decode)
+     
       getUserInformation(decode.sub, localStorage.getItem('token')).then(res => {
-        console.log(res.data)
+     
         if (res.data[0].type === "user") {
          
         }
@@ -33,7 +33,7 @@ const UserProtectedRoute = ({ account, children }) => {
   }, [done]);
 
   useEffect(() => {
-    console.log(isUser)
+
   }, [isUser])
 
   if (loading) {

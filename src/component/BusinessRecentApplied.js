@@ -9,17 +9,16 @@ const BusinessRecentApplied = () => {
     const businessId = useSelector(state => state.business.businessId)
     const {data,isLoading,error} = useGetBusinessJobApplicationsQuery(businessId)
     if (isLoading) {
-       
-        console.log(data)
+
     }
 
     const handleViewJobApplication = async(jobApplication) => {
         //check if the job application has been viewed.
         if(jobApplication.job_application_status == "Not viewed"){
             //update the status to viewed
-            console.log("this app hasnt been viewed yet..Changin to viewed")
+    
             const response = await changeApplicationViewedStatus(jobApplication.job_application_id)
-            console.log(response)
+
         }
 
         navigate(`jobapplications/${jobApplication.job_application_id}`)
@@ -28,6 +27,8 @@ const BusinessRecentApplied = () => {
    <>
    <div className='business-recent-applied-container'>
     <h2> Recent Job Applications</h2>
+    <br/>
+    <br/>
     <table className='business-recent-applied-table'>
         <tr>
             <th>Job Title</th>

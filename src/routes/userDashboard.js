@@ -20,7 +20,7 @@ const UserDashboard = () => {
   if(isLoading){
     return <div>Loading...</div>
   }
-  console.log(data)  
+  
   dispatch(setUserState({id: data[0]?.user_id}))
   const navigateHome = () => {
     navigate('/')

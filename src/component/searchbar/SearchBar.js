@@ -17,7 +17,7 @@ const SearchBar = () => {
 
   const handleJobType = async(e) => {
     if(jobType.current.value.length > 4){
-      console.log("this is job type", jobType.current.value)
+  
         setShowJobTypeDropdown(true);
       const response = await getJobTitles({
         jobTitle: jobType.current.value,
@@ -29,7 +29,7 @@ const SearchBar = () => {
     }
   };
   const handleJobTypeClick = (job) => {
-    console.log("this is job", job)
+   
     setJobTypeString(job.job_title)
     jobType.current.value = job.job_title;
     setShowJobTypeDropdown(false);

@@ -42,7 +42,7 @@ const CreateBusinessPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if(page === 2){
-      console.log("submitting")
+      
       let business= {
         id : null ,
         name : formData.businessName,
@@ -68,7 +68,6 @@ const CreateBusinessPage = () => {
       }
       try{
         const userData = await createBusiness({business: business, address: address}).unwrap();
-        console.log("This is userdata",userData)
         setCreatedBusiness(true);
         setTimeout(() => {
           setCreatedBusiness(false);
@@ -77,11 +76,10 @@ const CreateBusinessPage = () => {
         
       }
       catch(err){
-        console.log(err)
+    
       }
       return;
     }
-    console.log(formData)
     setPage(page + 1);
   }
 

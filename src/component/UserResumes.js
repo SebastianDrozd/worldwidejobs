@@ -18,9 +18,9 @@ const UserResumes = () => {
     form.append("user_id", userId);
     try {
       const response = await uploadUserResume(form).unwrap();
-      console.log(response);
+     
     } catch (error) {
-      console.log(error);
+  
     }
   };
   if (isLoading) {
