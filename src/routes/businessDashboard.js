@@ -54,6 +54,9 @@ const BusinessDashboard = () => {
     <button onClick = { () => navigate("/createNewJob")}>Create new Job Posting</button>
     </div>
     </div>
+    <div className='right-side-bar'>
+
+    </div>
     
     </>
    

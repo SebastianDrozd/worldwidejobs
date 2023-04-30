@@ -27,6 +27,7 @@ import JobsPage from './routes/jobsPage';
 import LandingPageNavBar from './component/LandingPageNavBar';
 import ApplyJobPage from './routes/applyJobPage';
 import UserJobApplications from './routes/UserJobApplications';
+import ViewAppliedJobPage from './routes/ViewAppliedJobPage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/bDashboard" element={<BusinessDashboard />} />
             <Route path = "bcreateBusiness" element={<CreateBusinessPage/>}/>
             <Route path = "createNewJob" element={<CreateJobPostingPage/>}/>
+            <Route path = "bDashboard/jobapplications/:applicationId" element={<ViewAppliedJobPage/>}/>
           </Route>
           <Route element={<RequireAuth allowedRoles={"user"} />}>
             <Route path="/uDashboard" element={<UserDashboard />} />

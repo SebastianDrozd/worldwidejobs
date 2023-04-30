@@ -119,8 +119,8 @@ const Login = () => {
               </div>
               <span>or use your account</span>
               {userNotFoundError && <p style={{color:'red'}}>A user could not be found with that email</p>}
-              <input ref={email} type="email" placeholder="Email" />
-              <input ref={password} type="password" placeholder="Password" />
+              <input ref={email} type="email" placeholder="Email" value="srankoin3@localhost" />
+              <input ref={password} type="password" placeholder="Password" value="12345" />
               {wrongPasswordError && <p style={{color:'red'}}>You have entered an incorrect password for this account</p>}
               <a href="#">Forgot your password?</a>
               <button onClick={handleLogin}>Sign In</button>

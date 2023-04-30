@@ -7,15 +7,16 @@ const BusinessMyCards = () => {
                 <h1>My Info</h1>
                 <div className='business-cards'>
                     <div className='business-card'>
-                        <h2>Business Name</h2>
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <h2>New Applications</h2>
                         <p>Business Name</p>
                     </div>
                     <div className='business-card'>
-                        <h2>Business Name</h2>
+                        <h2>New Saved Jobs</h2>
                         <p>Business Name</p>
                     </div>
                     <div className='business-card'>
-                        <h2>Business Name</h2>
+                        <h2>New Messages</h2>
                         <p>Business Name</p>
                     </div>
                 </div>

@@ -13,14 +13,28 @@ export const jobApplicationApiSlice = apiSlice.injectEndpoints({
             query: (userId) => ({
                 url: `jobApplications/users/${userId}`,
                 method: "GET",  
-            })
+            }),
         }),
         getBusinessJobApplications : builder.query({
             query: (businessId) => ({
                 url: `jobApplications/business/${businessId}`,
                 method: "GET",
             }),
+            providesTags: ['Applications'],
+        }),
+        getJobApplicationDetails : builder.query({
+            query: (applicationId) => ({
+                url: `jobApplications/${applicationId}`,
+                method: "GET",
+            }),
+        }),
+        changeApplicationViewedStatus : builder.mutation({
+            query: (applicationId) => ({
+                url: `jobApplications/${applicationId}/viewed`,
+                method: "POST",  
+            }),
+            invalidatesTags: ['Applications'],
         }),
     }),
 });
-export const { useSubmitJobApplicationMutation,useGetUserJobApplicationsQuery,useGetBusinessJobApplicationsQuery } = jobApplicationApiSlice;
+export const { useSubmitJobApplicationMutation,useGetUserJobApplicationsQuery,useGetBusinessJobApplicationsQuery,useGetJobApplicationDetailsQuery ,useChangeApplicationViewedStatusMutation } = jobApplicationApiSlice;

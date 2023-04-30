@@ -1,12 +1,28 @@
 import React from 'react'
 import "../css/businessRecentApplied.css"
 import { useSelector } from 'react-redux'
-import { useGetBusinessJobApplicationsQuery } from '../redux/jobApplication'
+import { useChangeApplicationViewedStatusMutation, useGetBusinessJobApplicationsQuery } from '../redux/jobApplication'
+import { useNavigate } from 'react-router-dom'
 const BusinessRecentApplied = () => {
+    const navigate = useNavigate()
+    const [changeApplicationViewedStatus] = useChangeApplicationViewedStatusMutation()
     const businessId = useSelector(state => state.business.businessId)
     const {data,isLoading,error} = useGetBusinessJobApplicationsQuery(businessId)
     if (isLoading) {
        
+        console.log(data)
+    }
+
+    const handleViewJobApplication = async(jobApplication) => {
+        //check if the job application has been viewed.
+        if(jobApplication.job_application_status == "Not viewed"){
+            //update the status to viewed
+            console.log("this app hasnt been viewed yet..Changin to viewed")
+            const response = await changeApplicationViewedStatus(jobApplication.job_application_id)
+            console.log(response)
+        }
+
+        navigate(`jobapplications/${jobApplication.job_application_id}`)
     }
   return (
    <>
@@ -28,7 +44,9 @@ const BusinessRecentApplied = () => {
                 <td>{jobApplication.firstname + " " + jobApplication.lastname}</td>
                 <td>{jobApplication.application_created}</td>
                 <td>{jobApplication.job_application_status}</td>
-                <td><button>view</button></td>
+                <td><button onClick={() => {
+                    handleViewJobApplication(jobApplication)
+                }}>view</button></td>
             </tr>
         </>))}
     </table>

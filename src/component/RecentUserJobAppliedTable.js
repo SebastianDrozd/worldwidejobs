@@ -15,6 +15,10 @@ const RecentUserJobAppliedTable = () => {
   const handleViewMore = () => {
     navigate('/uDashboard/jobapplications')
   };
+
+  const handleViewJobApplication =async (jobApplication) => {
+    
+  }
   return (
     <>
       <div className="recent-job-applications-wrapper">

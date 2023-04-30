@@ -7,8 +7,17 @@
 .content {
   margin-left: 100px;
   padding: 4em;
-
+  
 }
 
 .business-right-container {
+}
+
+.right-side-bar{
+  position: absolute;
+  top: 1;
+  right: 0;
+  border: 1px solid black;
+  width: 300px;
+    
 }
