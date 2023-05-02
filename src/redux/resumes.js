@@ -8,13 +8,16 @@ export const regUserApiSlice = apiSlice.injectEndpoints({
                 url: `/resumes`,
                 method: 'POST',
                 body: data,
-            })      
+            }),
+            invalidatesTags: ['Resumes'],
+
        }),
          getUserResumes: builder.query({
             query: (userId) => ({
                 url: `/resumes/users/${userId}`,
                 method: 'GET',
             }),
+            providesTags: ['Resumes'],
          }),
     }),
 })

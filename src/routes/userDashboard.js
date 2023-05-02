@@ -21,7 +21,9 @@ const UserDashboard = () => {
     return <div>Loading...</div>
   }
   
-  dispatch(setUserState({id: data[0]?.user_id}))
+  console.log(data)
+
+  dispatch(setUserState({id: data[0]?.user_id, firstName: data[0]?.firstname, lastName: data[0]?.lastname, email: data[0]?.email}))
   const navigateHome = () => {
     navigate('/')
   }
