@@ -1,43 +1,43 @@
-import React from 'react'
-import LogoutButton from '../component/logoutButton'
-import { ResponsiveContainer,BarChart,XAxis,YAxis,Bar,LineChart,Tooltip,Legend,Line } from 'recharts'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { useGetUserInformationQuery } from '../redux/user/userApiSlice'
-import { useGetUserProfileInfoQuery } from '../redux/regUsers'
-import { setUserState } from '../redux/slices/userSlice'
-import RecentUserJobAppliedTable from '../component/RecentUserJobAppliedTable'
-import "../css/userDashboard.css"
-import UserDashboardProfile from '../component/UserDashboardProfile'
-import UserResumes from '../component/UserResumes'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetUserProfileInfoQuery } from "../redux/regUsers";
+import { setUserState } from "../redux/slices/userSlice";
+import RecentUserJobAppliedTable from "../component/RecentUserJobAppliedTable";
+import "../css/userDashboard.css";
+import UserResumes from "../component/UserResumes";
 const UserDashboard = () => {
-  const email = useSelector (state => state.auth.user);
-  const {data,error,isLoading} = useGetUserProfileInfoQuery(email);
-  const dispatch = useDispatch()
-
-  const navigate = useNavigate()
-
-  if(isLoading){
-    return <div>Loading...</div>
+  const email = useSelector((state) => state.auth.user);
+  const { data, isLoading } = useGetUserProfileInfoQuery(email);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-  
-  console.log(data)
-
-  dispatch(setUserState({id: data[0]?.user_id, firstName: data[0]?.firstname, lastName: data[0]?.lastname, email: data[0]?.email}))
+  dispatch(
+    setUserState({
+      id: data[0]?.user_id,
+      firstName: data[0]?.firstname,
+      lastName: data[0]?.lastname,
+      email: data[0]?.email,
+    })
+  );
+  if(data[0]?.accountsetup == "false"){
+    navigate('/completeUserAccount')
+  }
   const navigateHome = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
+  console.log(data[0])
   return (
     <>
-    <div className='user-dashboard-layout-wrapper'>
-      <RecentUserJobAppliedTable/>
-     
-      <UserResumes/>
-      <button onClick={navigateHome}>Home</button>
-    </div>
-  
+      <div className="user-dashboard-layout-wrapper">
+        <RecentUserJobAppliedTable />
+        <UserResumes />
+        <button onClick={navigateHome}>Home</button>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default UserDashboard
+export default UserDashboard;

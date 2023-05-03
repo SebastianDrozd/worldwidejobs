@@ -19,6 +19,21 @@ export const regUserApiSlice = apiSlice.injectEndpoints({
             }),
             providesTags: ['Resumes'],
          }),
+         deleteUserResume: builder.mutation({
+            query: (resumeId) => ({
+                url: `/resumes/${resumeId}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Resumes'],
+         }),
+         editUserResume : builder.mutation({
+            query: (data) => ({
+                url: `/resumes/${data.resumeId}`,
+                method: 'PUT',
+                body: data,
+            }),
+            invalidatesTags: ['Resumes'],
+         }),
     }),
 })
-export const { useUploadUserResumeMutation,useGetUserResumesQuery } = regUserApiSlice;
+export const { useUploadUserResumeMutation,useGetUserResumesQuery,useDeleteUserResumeMutation,useEditUserResumeMutation } = regUserApiSlice;

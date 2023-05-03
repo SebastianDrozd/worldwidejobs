@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { useGetUserJobApplicationsQuery } from "../redux/jobApplication";
 import "../css/RecentUserJobAppliedTable.css";
 import { useNavigate } from "react-router-dom";
+import moment from "moment/moment";
 const RecentUserJobAppliedTable = () => {
   const navigate = useNavigate()
   const id = useSelector((state) => state.auth.user);
- 
-  const { data, error, isLoading } = useGetUserJobApplicationsQuery(id);
+  const { data, isLoading } = useGetUserJobApplicationsQuery(id);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -34,7 +34,7 @@ const RecentUserJobAppliedTable = () => {
           {data &&
             data.map((jobApplication) => (
               <tr>
-                <td>{jobApplication.application_created}</td>
+                <td>{new Date(jobApplication.application_created).toDateString()}</td>
                 <td>{jobApplication.name}</td>
                 <td>{jobApplication.job_title}</td>
                 <td>{jobApplication.job_application_status}</td>

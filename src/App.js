@@ -28,6 +28,7 @@ import LandingPageNavBar from './component/LandingPageNavBar';
 import ApplyJobPage from './routes/applyJobPage';
 import UserJobApplications from './routes/UserJobApplications';
 import ViewAppliedJobPage from './routes/ViewAppliedJobPage';
+import CompleteUserAccount from './routes/CompleteUserAccount';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route path="/uDashboard" element={<UserDashboard />} />
             <Route path = "applyJob/:jobId" element={<ApplyJobPage/>}/>
             <Route path = "/uDashboard/jobapplications" element={<UserJobApplications/>}/>
+            <Route path="/completeUserAccount" element={<CompleteUserAccount/>} />
           </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />

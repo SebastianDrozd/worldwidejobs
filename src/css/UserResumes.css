@@ -5,7 +5,7 @@
     align-items: center;
     border: 1px solid rgb(144, 144, 144);
     border-radius: 40px;
-    padding: 2em;
+    padding: 3em;
     margin-left: 1em;
    
 }
@@ -15,19 +15,48 @@
     max-height: 300px;
     overflow-y: scroll;
 }
+
 .resume-item{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid rgb(212, 210, 208);
     border-radius: 0.5rem;
     white-space: normal;
    
-    padding:1em 5em;
-    cursor: pointer;
+    padding:1em 7em;
     width: 100%;
     margin-top: 1em;
 }
+.resume-item:hover{
+    border-color: green;
+}
 .added{
     display: block;
+}
+.resume-logo{
+    margin-bottom: 1em;
+}
+.resume-edit-button{
+    margin-top: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    margin-bottom: .5em;
+}
+.resume-delete-button{
+    margin-top: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 5, 5);
+    margin-bottom: .5em;
+}
+.edit-block input
+{
+    max-width: 200px;
 }
