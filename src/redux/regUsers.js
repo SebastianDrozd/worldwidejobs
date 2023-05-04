@@ -5,7 +5,14 @@ export const regUserApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getUserProfileInfo: builder.query({
             query: (email) => `regUsers/${email}`,
-        })
+        }),
+        completeUserProfile: builder.mutation({
+            query: (body) => ({
+                url: `regUsers/completeProfile`,
+                method: 'POST',
+                body,
+            }),
+        }),
     }),
 })
-export const { useGetUserProfileInfoQuery } = regUserApiSlice;
+export const { useGetUserProfileInfoQuery,useCompleteUserProfileMutation } = regUserApiSlice;
