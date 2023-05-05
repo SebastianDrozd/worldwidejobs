@@ -29,6 +29,7 @@ import ApplyJobPage from './routes/applyJobPage';
 import UserJobApplications from './routes/UserJobApplications';
 import ViewAppliedJobPage from './routes/ViewAppliedJobPage';
 import CompleteUserAccount from './routes/CompleteUserAccount';
+import UserNotifications from './routes/UserNotifications';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path = "applyJob/:jobId" element={<ApplyJobPage/>}/>
             <Route path = "/uDashboard/jobapplications" element={<UserJobApplications/>}/>
             <Route path="/completeUserAccount" element={<CompleteUserAccount/>} />
+            <Route path= "/userNotifications" element={<UserNotifications/>} />
           </Route>
           <Route path="/confirm/:token" element={<ConfirmPage />} />
           <Route path="/" element={<LandingPage />} />

@@ -1,0 +1,75 @@
+.notifications-container {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .notifications-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .notification-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    min-width: 800px;
+  }
+  
+  .notification-icon {
+    margin-right: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .notification-details {
+    flex: 1;
+  }
+  
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .notification-company {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .notification-time {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .notification-content {
+    font-size: 16px;
+    color: #666;
+  }
+  .view-job-posting-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #0077b5;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-job-posting-btn:hover {
+    background-color: #005ea2;
+  }
+  

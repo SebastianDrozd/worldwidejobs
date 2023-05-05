@@ -5,6 +5,7 @@ export const regUserApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getUserProfileInfo: builder.query({
             query: (email) => `regUsers/${email}`,
+            providesTags: ['regUsers'],
         }),
         completeUserProfile: builder.mutation({
             query: (body) => ({
@@ -13,6 +14,14 @@ export const regUserApiSlice = apiSlice.injectEndpoints({
                 body,
             }),
         }),
+        editUserProfile: builder.mutation({
+            query: (body) => ({
+                url: `regUsers`,
+                method: 'PUT',
+                body,
+            }),
+            invalidatesTags: ['regUsers'],
+        }),
     }),
 })
-export const { useGetUserProfileInfoQuery,useCompleteUserProfileMutation } = regUserApiSlice;
+export const { useGetUserProfileInfoQuery,useCompleteUserProfileMutation,useEditUserProfileMutation } = regUserApiSlice;

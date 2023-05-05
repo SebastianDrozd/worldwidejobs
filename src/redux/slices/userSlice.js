@@ -7,6 +7,8 @@ export const userSlice = createSlice({
     firstName : null,
     lastName : null,
     email : null,
+    phoneNumber : null,
+    address : null,
     
   },
   reducers: {
@@ -15,6 +17,8 @@ export const userSlice = createSlice({
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
+      state.phoneNumber = action.payload.phoneNumber;
+      state.address = action.payload.address;
     }
   }
 })
