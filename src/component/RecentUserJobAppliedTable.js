@@ -30,7 +30,7 @@ const RecentUserJobAppliedTable = () => {
   return (
     <>
       <div className="recent-job-applications-wrapper">
-        <h2>My Recent Job Applications</h2>
+        <h2 className="jobs-header">My Recent Job Applications</h2>
         <table className="application-recents-table">
           <tr>
             <th>Date Applied</th>
@@ -46,7 +46,7 @@ const RecentUserJobAppliedTable = () => {
                 <td>{jobApplication.name}</td>
                 <td>{jobApplication.job_title}</td>
                 <td>{jobApplication.job_application_status}</td>
-                <td><button onClick={() => handleViewJobApplication(jobApplication)}>Info</button></td>
+                <td><button onClick={() => handleViewJobApplication(jobApplication)}></button></td>
               </tr>
             ))}
         </table>

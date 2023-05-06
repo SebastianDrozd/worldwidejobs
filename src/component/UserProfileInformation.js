@@ -52,6 +52,7 @@ const UserProfileInformation = () => {
     <>
       <div class="profile-container">
         <h2>User Profile Information</h2>
+        <hr/>
         <div class="profile-info">
           <div class="info-item">
             <label for="first-name">First Name:</label>
@@ -63,7 +64,7 @@ const UserProfileInformation = () => {
                 onChange={(e) => setFirstName(e.target.value)}
               />
             ) : (
-              <span id="first-name">{user.firstName}</span>
+              <span className="profile-tags" id="first-name">{user.firstName}</span>
             )}
           </div>
           <div class="info-item">

@@ -28,29 +28,37 @@ const UserDashboard = () => {
         stateProvince: data[0]?.state_province,
         country: data[0]?.country,
         postalCode: data[0]?.postal_code,
-      }
+      },
     })
   );
-  if(data[0]?.accountsetup == "false"){
-    navigate('/completeUserAccount')
+  if (data[0]?.accountsetup == "false") {
+    navigate("/completeUserAccount");
   }
   const navigateHome = () => {
     navigate("/");
   };
-  console.log(data[0])
+  console.log(data[0]);
   return (
     <>
-    <button className="notification-button" onClick={() => navigate("/userNotifications")} >
+      <button
+        className="notification-button"
+        onClick={() => navigate("/userNotifications")}
+      >
         <i className="fa fa-bell"></i>
         <span className="notification-badge">3</span>
       </button>
+
+    
       <div className="user-dashboard-layout-wrapper">
-      <UserProfileInformation/>
-      <br/>
-        <RecentUserJobAppliedTable />
-        <br/>
+        <h1 className="dash-header">User Dashboard</h1>
+      <div className="dashboard-top-row">
+        <UserProfileInformation />
         <UserResumes />
-       
+      </div>
+        <RecentUserJobAppliedTable />
+        <br />
+      
+
         <button onClick={navigateHome}>Home</button>
       </div>
     </>

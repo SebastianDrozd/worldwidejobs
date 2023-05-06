@@ -3,30 +3,48 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 10px;
-    padding: 3em;
+    padding: 4em;
     margin-left: 1em;
    
 }
 .resumes-list-wrapper{
-   
-    margin-top: 1em;
-    max-height: 300px;
+  
+    max-height: 290px;
     overflow-y: scroll;
+}
+.resumes-header{
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+.resume-input-btn{
+    background-color: transparent;
+    border: 1px solid rgb(236, 235, 235);
+}
+.resume-submit-btn{
+    background-color: #229dca;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .resume-item{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid rgb(212, 210, 208);
     border-radius: 0.5rem;
     white-space: normal;
-   
-    padding:1em 7em;
-    width: 100%;
+    width: 33em;
+   padding: 1em;
     margin-top: 1em;
 }
 .resume-item:hover{
@@ -40,23 +58,51 @@
 }
 .resume-edit-button{
     margin-top: 1em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+   
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #22ca52;
+    border: none;
     margin-bottom: .5em;
 }
 .resume-delete-button{
     margin-top: 1em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     background-color: rgb(253, 5, 5);
     margin-bottom: .5em;
 }
 .edit-block input
 {
-    max-width: 200px;
 }
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #0069d9;
+  }
+  
+  .custom-file-upload i {
+    margin-right: 8px;
+  }
+  .file-name{
+        margin-left: 1em;
+        font-weight: bold;
+  }

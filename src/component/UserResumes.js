@@ -69,16 +69,17 @@ const UserResumes = () => {
   return (
     <>
       <div className="resumes-wrapper">
-        <h2>My Resumes</h2>
+        <h2 className="resumes-header">My Resumes</h2>
+        
         <form action="" enctype="multipart/form-data">
-          <input ref={file} type="file" id="myFile" name="avatar" />
-          <input onClick={handleUploadResume} type="submit" />
+          <input className="resume-input-btn" ref={file} type="file" id="myFile" name="avatar" />
+          <input className="resume-submit-btn" onClick={handleUploadResume} type="submit" />
         </form>
         <div className="resumes-list-wrapper">
           {data && data.map((resume) => 
           <div className="resume-item">
-            <img className="resume-logo" src={pdf} height={50} width={50} alt="" />
-            {!wantsEdit ? <h4>{resume.resume_original_name}</h4> : <div className="edit-block"><input onChange={e => setNewResumeName(e.target.value)} ref={name} type="text" value={newResumeName} /><button onClick={() => {handleSaveEditedResume(resume.resume_id)}}>save</button></div>}
+            <img className="resume-logo" src={pdf} height={40} width={40} alt="" />
+            {!wantsEdit ? <p className="file-name">{resume.resume_original_name}</p> : <div className="edit-block"><input onChange={e => setNewResumeName(e.target.value)} ref={name} type="text" value={newResumeName} /><button onClick={() => {handleSaveEditedResume(resume.resume_id)}}>save</button></div>}
             <p className="added">Added on: {new Date(resume.resume_uploaded).toDateString()}</p>
             <button onClick={() => { handleEditResume(resume.resume_id,resume.resume_original_name)}} className="resume-edit-button">Edit</button>
             <button onClick={(() => { handleDeleteResume(resume.resume_id)})} className="resume-delete-button">Delete</button>
