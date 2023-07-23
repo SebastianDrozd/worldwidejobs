@@ -65,6 +65,6 @@
 }
 .land-nav-menu ul li:hover{
     background-color: rgba(127, 249, 255, 0.112);
-    border-bottom: 1px solid rgb(0, 149, 255) ;
+    
     border-radius: 5px ;
 }

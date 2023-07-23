@@ -8,12 +8,14 @@ export const jobApplicationApiSlice = apiSlice.injectEndpoints({
                 method: "POST",
                 body: jobApplication,
             }),
+            invalidatesTags: ['Applications'],
         }),
         getUserJobApplications : builder.query({
             query: (userId) => ({
                 url: `jobApplications/users/${userId}`,
                 method: "GET",  
             }),
+            providesTags: ['Applications'],
         }),
         getBusinessJobApplications : builder.query({
             query: (businessId) => ({

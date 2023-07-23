@@ -40,17 +40,19 @@ const UserDashboard = () => {
   console.log(data[0]);
   return (
     <>
-      <button
-        className="notification-button"
-        onClick={() => navigate("/userNotifications")}
-      >
-        <i className="fa fa-bell"></i>
-        <span className="notification-badge">3</span>
-      </button>
-
-    
+   
       <div className="user-dashboard-layout-wrapper">
+        <div className="header-row">
         <h1 className="dash-header">User Dashboard</h1>
+        
+        <div className="icon-div">
+        <i onClick={() => navigate("/userNotifications")} style={{fontSize: '20px'}} className="fa fa-bell icon-item"></i>
+        <i style={{fontSize: '20px'}} className="fa fa-envelope icon-item"></i>
+        <i style={{fontSize: '20px'}} className="fa fa-user-circle icon-item"></i>
+        <i style={{fontSize: '20px'}} className="fa fa-sign-out"></i>
+        </div>
+        </div>
+        
       <div className="dashboard-top-row">
         <UserProfileInformation />
         <UserResumes />

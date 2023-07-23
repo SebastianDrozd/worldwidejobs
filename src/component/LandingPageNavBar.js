@@ -17,7 +17,7 @@ const LandingPageNavBar = () => {
     <>
       <div className="land-nav-container">
         <div className="land-nav-logo">
-          <h2 onClick={handleHome}>World Wide Jobs</h2>
+          <h4 onClick={handleHome}>World Wide Jobs</h4>
         </div>
        
         <div className='login-buttons'>

@@ -46,13 +46,12 @@ const JobsPage = () => {
       <br />
       <SearchBar />
       <DropDownFilters />
-      <div className="color-seperator"></div>
       <div className="job-search-container">
         <div className="job-search-left">
           <div class="listing-header">
             <div class="listing-header-left">
-              <h2 class="listing-header-title">Open Positions</h2>
-              <span class="listing-header-count">12 jobs found</span>
+              
+              <span class="listing-header-count">{data && data.length} jobs found</span>
             </div>
             <div class="listing-header-right">
               <span class="listing-header-sort">Sort by:</span>
@@ -154,14 +153,15 @@ const JobsPage = () => {
                 <p>{currentJob.job_education} </p>
               </div>
               <hr />
-              <div className="job-post-body">
+              <div className="job-post-body job-post-pay">
                 <h3>
                   <i style={{ color: "orange" }} class="fas fa-briefcase"></i>{" "}
                   Job Pay
                 </h3>
-                <p>
-                  {currentJob.job_currency} {currentJob.job_salary}{" "}
-                </p>
+                <p>Job pay frequency: {currentJob.job_pay_frequency}</p>
+                <p>Job pay type: {currentJob.job_pay_type}</p>
+                <p>Job pay currency: {currentJob.job_currency}</p>
+                <p>Job pay salary: {currentJob.job_salary}</p>
               </div>
             </div>
           </div>
